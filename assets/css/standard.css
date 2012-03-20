@@ -1,0 +1,58 @@
+#copyright{
+	border-radius:4px;
+	box-shadow:0 0 2px rgba(0,0,0,0.2);
+	border:1px solid #8a9ba0;
+	background:#F0F5F7;
+	padding:5px 20px 0px 20px;
+	height:30px;
+	width:600px;
+	font-family: "Bonzai";
+	position:relative;
+	margin-left:auto;
+	margin-right:auto;
+	list-style:none;
+	text-align:center;
+	vertical-align:middle;
+	color:#CCC;
+	font-size:18px;
+}
+
+#share{
+	border-radius:4px;
+	box-shadow:0 0 2px rgba(0,0,0,0.2);
+	border:1px solid #8a9ba0;
+	background:#F0F5F7;;
+	padding:10px 10px 10px 10px;
+	text-align:center;
+	height:50px;
+	margin-bottom: 25px;
+	position:relative;
+	width:620px;
+	margin-left:auto;
+	margin-right:auto;
+	list-style:none;
+	font-size:18px;
+}
+
+#nameDialogClose{
+	width:265px;	
+}
+
+#timeDialogClose{
+	width:265px;	
+}
+
+#Name{
+	width:260px;	
+}
+
+#TimeClose{
+	width:260px;	
+}
+
+#TimeInput{
+	width:93px;	
+}
+#dialogSelect{
+	width:160px;	
+}

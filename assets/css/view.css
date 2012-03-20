@@ -1,0 +1,65 @@
+#box{
+	border-radius:4px;
+	box-shadow:0 0 2px rgba(0,0,0,0.2);
+	border:1px solid #8a9ba0;
+	background:url('/Haiku/assets/images/section_bg.png') repeat-x #f0f5f7;
+	padding:5px 20px 0px 20px;
+	margin-bottom: 20px;
+	position:relative;
+	width:600px;
+	margin-left:auto;
+	margin-right:auto;
+	list-style:none;
+	vertical-align:middle;
+	text-align:center;
+	position:relative;
+}
+
+.title{
+	margin: 0;
+	padding: 0;
+	line-height:60px;
+	color:#70777a;
+	font-size:18px;
+	text-align:center;
+}
+
+.Container{
+	width:600px;
+	margin:0px auto;	
+}
+
+
+
+html{
+	background:url('/Haiku/assets/images/tile_bg.png') #b0b0b0;
+	position:relative;
+}
+
+body{
+	min-height: 300px;
+    padding: 0px 0 0;
+	font:17px/1.5 'Segoe UI',Arial, sans-serif;
+	margin:50px 0px; 
+	padding:0px;	
+	heigth: 100%;
+	color:#000;
+}
+
+a{
+	text-decoration:none;
+	cursor:default;
+	color:#000;
+}
+
+a, a:visited {
+	text-decoration:none;
+	outline:none;
+	cursor:default;
+	color:#000;
+}
+
+a:hover{
+	text-decoration:none;
+	cursor:pointer;
+}

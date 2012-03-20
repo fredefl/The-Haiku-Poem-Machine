@@ -1,0 +1,12 @@
+ErrorDocument 400 http://illution.dk/Error.php?400
+ErrorDocument 402 http://illution.dk/Error.php?402
+ErrorDocument 403 http://illution.dk/Error.php?403
+ErrorDocument 404 http://illution.dk/Error.php?404
+ErrorDocument 401 http://illution.dk/Error.php?401
+
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
+

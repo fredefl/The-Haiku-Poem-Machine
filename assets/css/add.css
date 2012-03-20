@@ -1,0 +1,31 @@
+#Field1{
+	border-color:#000;
+}
+
+#Field2{
+	border-color:#000;
+}
+
+#Field3{
+	border-color:#000;	
+}
+
+#Creator{
+	border-color:#000;	
+}
+
+#Lang{
+	border-color:#000;
+	border-collapse:collapse;
+}
+
+#submit{
+	background-color:#000000;
+	color:#FFFFFF;
+}
+
+#Image{
+	top:-25px;
+	left:-45px;
+	position:absolute;	
+}

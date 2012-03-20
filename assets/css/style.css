@@ -1,0 +1,162 @@
+body {
+	margin:50px 0px; padding:0px;	
+	heigth: 100%;
+}
+
+#Container{
+	width:500px;
+	margin:0px auto;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	cursor:default;	
+}
+
+/* FLAGS */
+
+#flagDK {
+	position:absolute;
+	right:41px;	
+	top:25px;
+	cursor:pointer;
+}
+
+#flagGB {
+	position:absolute;
+	right:20px;	
+	top:25px;
+	cursor:pointer;
+}
+
+/*Copyright and Share Containers and Styles */
+
+#All{
+		
+}
+
+#Creator{
+	
+}
+
+#Time{
+	
+}
+
+#Id{
+	
+}
+
+#nameDialogClose{
+	width:265px;	
+}
+
+#timeDialogClose{
+	width:265px;	
+}
+
+#Name{
+	width:260px;	
+}
+
+#TimeClose{
+	width:260px;	
+}
+
+#TimeInput{
+	width:93px;	
+}
+#dialogSelect{
+	width:160px;	
+}
+
+#shareContainer{
+	width:500px;
+	margin:0px auto;
+	margin-top:-35px;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	cursor:default;	
+}
+
+#share{
+	border-radius:4px;
+	box-shadow:0 0 2px rgba(0,0,0,0.2);
+	border:1px solid #8a9ba0;
+	background: #F0F5F7;
+	padding:10px 10px 10px 10px;
+	margin-bottom: 55px;
+	height:50px;
+	position:relative;	
+	margin-left:auto;
+	margin-right:auto;
+	list-style:none;
+	font-size:18px;
+	text-align:center;
+	vertical-align:middle;
+}
+
+#copyrightContainer {
+	width:500px;
+	margin:0px auto;
+	margin-top:-35px;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	cursor:default;		
+}
+
+#copyright {
+	border-radius:4px;
+	box-shadow:0 0 2px rgba(0,0,0,0.2);
+	border:1px solid #8a9ba0;
+	background: #F0F5F7;
+	padding:5px 20px 0px 20px;
+	margin-bottom: 55px;
+	position:relative;	
+	margin-left:auto;
+	margin-right:auto;
+	font-family: "Bonzai";
+	list-style:none;
+	text-align:center;
+	vertical-align:middle;
+	color:#CCC;
+	font-size:18px;
+}
+ 
+/* End of Copyrigth and Share Styles */
+
+.addIcon_WebkitOpera {
+	cursor:pointer;
+	margin-left:5px;
+	vertical-align: middle;
+}
+
+.dialogValidationIcon_WebkitFirefox {
+	position:absolute;
+	right:17px;	
+	margin-top:5px;
+}
+#poemShowcaseContainer {
+	width:500px;
+	margin:0px auto;
+	margin-top:-175px;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	cursor:default;		
+}
+
+#poemShowcase {
+	border-radius:4px;
+	box-shadow:0 0 2px rgba(0,0,0,0.2);
+	border:1px solid #8a9ba0;
+	background: #F0F5F7;
+	padding:0 20px 20px;
+	margin-bottom: 55px;
+	position:relative;	
+}
+#poemShowcase p {
+	font-weight:bold;	
+}
+
+#poemShowcase a {
+	text-decoration:none;
+	color:#000000;	
+}
