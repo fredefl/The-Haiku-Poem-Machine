@@ -7,7 +7,7 @@ class Add extends CI_Controller {
 		show_error(501);
 	}
 	
-	public function AddLlama($Password = ""){
+	/**public function AddLlama($Password = ""){
 		if($Password != ""){
 			if($Password == base64_decode("bGxhbWEyODY0")){
 				$this->load->library('Lang');
@@ -22,7 +22,7 @@ class Add extends CI_Controller {
 		else{
 			show_error(403);	
 		}
-	}
+	}**/
 	
 	/*
 	*A function to create a Language Box
@@ -30,7 +30,7 @@ class Add extends CI_Controller {
 	* @return {Html} LangData   Returns the language box options in html
 	*/
 	private function LanguageBox($Language){
-		$Lang = array();
+		/*$Lang = array();
 		$LangData = "";
 		$Lang = $Language->CountrySelection();
 		$LangData .= '<select name="Lang" id="Lang">';
@@ -43,14 +43,14 @@ class Add extends CI_Controller {
 			}
 		}
 		$LangData .= '</select>';
-		return $LangData;
+		return $LangData;*/
 	}
 	
 	/*
 	*The Function to get the post data and the uri segment to post to with data form and Save it
 	*/
 	public function POST(){
-		$POST = array();
+		/*$POST = array();
 		$POST = $this->input->post();
 		if(isset($POST["Pass"])){
 			if($POST["Pass"] == "Llama"){
@@ -59,7 +59,7 @@ class Add extends CI_Controller {
 				$Adddata->SaveData($POST);
 			}
 		}
-		redirect("");
+		redirect("");*/
 	}
 	
 	/*
@@ -69,7 +69,7 @@ class Add extends CI_Controller {
 	* @return {Array} Settings   Returns and array in the accepted format form CodeIgniter load->view
 	*/
 	private function Settings($Language,$PageTitle){
-		if($this->input->get('lang',TRUE) != ""){
+		/*if($this->input->get('lang',TRUE) != ""){
 			$Lang = $this->input->get('lang',TRUE);
 		}
 		else{
@@ -130,7 +130,7 @@ class Add extends CI_Controller {
 			'id_label' => $IdLabel,
 			'languages' => $LangData
 		);
-		return $Settings;
+		return $Settings;*/
 	}
 	
 	/*
@@ -141,10 +141,10 @@ class Add extends CI_Controller {
 	* @return {Array} Output	   Returns an arrat in the format "Title" => "Translated text"
 	*/
 	private function TextData($Input,$Language,$Lang){
-		$Output = array();
+		/*$Output = array();
 		foreach($Input as $Name => $Value){	
 			$Output[$Name] = $Language->Translate($Value,$Lang);
 		}
-		return $Output;
+		return $Output;*/
 	}
 }

@@ -39,7 +39,7 @@
 */
 
 $route['default_controller'] = "home";
-$route['404_override'] = 'http://illution.dk/Error.php?404';
+$route['404_override'] = '';
 
 
 /* End of file routes.php */

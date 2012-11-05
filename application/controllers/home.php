@@ -4,20 +4,21 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->library('Lang');
+		$this->load->view("home_view",$this->ui_helper->ControllerInfo());
+		/*$this->load->library('Lang');
 		$Language = new Lang();
 		$data = self::Settings($Language,"Hjem");
-		$this->load->view('home_view',$data);
+		$this->load->view('home_view',$data);*/
 	}
 	
-	/*
+	/**
 	*A function that translate all the requiered text and gets all the requiered settings from the config files
 	* @param {Object} Language    An instance of the Lang library
 	* @param {String} PageTitle   The Language in the Culture Format specified in illutio_users.languages
 	* @return {Array} Settings   Returns and array in the accepted format form CodeIgniter load->view
 	*/
 	private function Settings($Language,$PageTitle){
-		if($this->input->get('lang',TRUE) != ""){
+		/*if($this->input->get('lang',TRUE) != ""){
 			$Lang = $this->input->get('lang',TRUE);
 		}
 		else{
@@ -87,10 +88,10 @@ class Home extends CI_Controller {
 			'id_dialog' => $IdDialog,
 			'id_label' => $IdLabel
 		);
-		return $Settings;
+		return $Settings;*/
 	}
 	
-	/*
+	/**
 	*Translates all the information specified in the first parameters to third perameter language using the Lang library specified in the Language perameter
 	* @param {Array} Input    The input array specified with "Title" => "data"
 	* @param {Object} Language    An instance of the Lang library
@@ -98,10 +99,10 @@ class Home extends CI_Controller {
 	* @return {Array} Output	   Returns an arrat in the format "Title" => "Translated text"
 	*/
 	private function TextData($Input,$Language,$Lang){
-		$Output = array();
+		/*$Output = array();
 		foreach($Input as $Name => $Value){	
 			$Output[$Name] = $Language->Translate($Value,$Lang);
 		}
-		return $Output;
+		return $Output;*/
 	}
 }

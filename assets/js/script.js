@@ -35,7 +35,7 @@ var currentSentenceNumber = 1;
 */
 function downloadFeed () {
 	$.ajax({
-	  url: 'http://illution.dk/Haiku/live/Language/'+lang,
+	  url: $("#base_url").val()+'live/?language='+lang,
 	  success: function (data) {
 		  $('#poemShowcase').html(data);
 	  }
@@ -88,7 +88,7 @@ $(function(){
 			return false;
 		}
 		working = true;
-		$.getJSON('http://illution.dk/Haiku/ajax/Language/'+lang,{},function(jsonData){
+		$.getJSON($("#base_url").val()+'ajax/?language'+lang,{},function(jsonData){
 			// Loop throug sentence numbers
 			var boxTitle = jsonData.boxTitle;
 			// Add the flags
@@ -172,7 +172,7 @@ $(function(){
 	*/
 	$('#saveDialogSaveButton').click(function () {
 		$('#creatorForm').val($('#saveDialogName').val());
-		ajaxCall('http://illution.dk/Haiku/Pusher/send_message.php', { message : "update" });
+		ajaxCall($("#base_url").val()+'Pusher/send_message.php', { message : "update" });
 		sendSelectValues();
 	});
 	
@@ -329,13 +329,13 @@ $(function(){
 		* When the Danish flag is clicked, send the user to the Danish page
 		*/
 		$('#flagDK').click(function () {
-			document.location = 'http://illution.dk/Haiku/?lang=da-DK';
+			document.location = $("#base_url").val()+'?language=danish';
 		});
 		/**
 		* When the English(GB) flag is clicked, send the user to the English(GB) page
 		*/
 		$('#flagGB').click(function () {
-			document.location = 'http://illution.dk/Haiku/?lang=en-GB';
+			document.location = $("#base_url").val()+'?language=english';
 		});
 	};
 	
@@ -357,7 +357,7 @@ $(function(){
 	// Create pusher object
 	pusher = new Pusher('9b245d36fea0d2611317');
 	// Set the channel auth endpoint
-	Pusher.channel_auth_endpoint = 'http://illution.dk/Haiku/Pusher/pusher_auth.php';
+	Pusher.channel_auth_endpoint = $("#base_url").val()+'Pusher/pusher_auth.php';
 	// Subscribe to the chat channel
 	chat_channel = pusher.subscribe('haiku-update-channel');
 	// Listen for the connected event
