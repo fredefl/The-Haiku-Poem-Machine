@@ -103,6 +103,23 @@ body {
 	cursor:default;		
 }
 
+hr {
+	margin-top:8px;
+}
+
+.header {
+	margin-bottom: 2px;
+}
+
+.sentence {
+	color:#70777a;
+}
+
+.sentences {
+	padding-left:10px;
+	padding-bottom: 3px;
+}
+
 #copyright {
 	border-radius:4px;
 	box-shadow:0 0 2px rgba(0,0,0,0.2);

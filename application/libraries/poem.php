@@ -49,6 +49,14 @@ class Poem extends Std_Library{
 	 */
 	public $language = null;
 
+	/**
+	 * The time the poem was created
+	 * @since 1.0
+	 * @access public
+	 * @var integer
+	 */
+	public $time_created = null;
+
 	############ Class Settings ###################
 
 	/**
@@ -71,6 +79,7 @@ class Poem extends Std_Library{
 			"Database_Table",
 			"_CI"
 		);
+		$this->_INTERNAL_CREATED_TIME_PROPERTY = array("time_created");
 		$this->_INTERNAL_LOAD_FROM_CLASS = array(
 			"sentences" => "Sentence"
 		);

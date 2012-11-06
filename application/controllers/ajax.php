@@ -1,8 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Ajax extends CI_Controller {
 
-	public function index()
-	{
+	/**
+	 * This funtion outputs the available sentences for a language
+	 * @since 1.0
+	 * @access public
+	 */
+	public function index () {
 		$this->load->model("sentences");
 		$this->load->library('Sentenceclass');
 		$SentenceClass = new Sentenceclass();

@@ -37,7 +37,28 @@ function downloadFeed () {
 	$.ajax({
 	  url: $("#base_url").val()+'live/?language='+lang,
 	  success: function (data) {
-		  $('#poemShowcase').html(data);
+	  	if (typeof data.poems == "undefined") {
+	  		return;
+	  	}
+	  	$('#poemShowcase').html("");
+	  	$.each(data.poems,function (index,element) {
+	  		if (element.sentences == null) {
+	  			return;
+	  		}
+	  		var poem = $('<a href="'+$("#base_url").val()+'poem/'+element.id+'"></a>');
+	  		poem.append('<p class="header">'+element.name+'</p>');
+	  		var sentences = $('<div class="sentences"></div>');
+	  		$.each(element.sentences, function (sentenceIndex, sentence) {
+	  			sentences.append('<span class="sentence">'+sentence.sentence+"</span><br>");
+	  		});
+			poem.append(sentences);
+	  		poem.append("<em> - "+element.creator+"</em>");
+	  		poem.append("<hr>");
+	  		$('#poemShowcase').append(poem);
+	  		if ($('#poemShowcase hr').length > 1) {
+	  			$('#poemShowcase hr:last').remove();
+	  		}
+	  	});
 	  }
 	});	
 }
@@ -89,13 +110,17 @@ $(function(){
 		}
 		working = true;
 		$.getJSON($("#base_url").val()+'ajax/?language'+lang,{},function(jsonData){
-			// Loop throug sentence numbers
-			var boxTitle = jsonData.boxTitle;
+			if (typeof jsonData.error_message != "undefined") {
+				var boxTitle = jsonData.error_message;
+			} else {
+				var boxTitle = jsonData.boxTitle;
+			}
 			// Add the flags
 			boxTitle += '<img id="flagDK" src="assets/images/dk.png"/>\
 						 <img id="flagGB" src="assets/images/gb.png"/>';
 			// Set the title of the box
 			$('#title').html(boxTitle);
+
 			var selectTitle = jsonData.selectTitle;
 			$.each(jsonData,function(sentenceNumber,sentences) {
 				if(sentenceNumber == 5 || sentenceNumber == 7){
@@ -362,10 +387,8 @@ $(function(){
 	chat_channel = pusher.subscribe('haiku-update-channel');
 	// Listen for the connected event
 	pusher.connection.bind('connected', function() {
-		console.log('Connected');
 		// Listen for new messages
 		chat_channel.bind('haiku-update', function(data) {
-			console.log('Got data');
 			// Call function to handle the data
 			setTimeout("downloadFeed()",2000);
 		});

@@ -37,7 +37,18 @@ class Ui_Helper {
 	 * @access public
 	 */
 	public function __construct () {
+		session_start();
 		$this->_CI =& get_instance();
+		$this->_CI->load->library("input");
+		$this->_CI->load->helper("cookie");
+
+		if ($this->_CI->input->get("language") !== false && in_array($this->_CI->input->get("language"), $this->_CI->config->item("supported_languages"))) {
+			$this->language = $this->_CI->input->get("language");
+			$_SESSION["language"] = $this->language;
+		} else if (isset($_SESSION["language"]) && in_array($_SESSION["language"], $this->_CI->config->item("supported_languages"))) {
+			$this->language = $_SESSION["language"];
+		}
+
 		$this->batch_load_lang_files($this->languageFiles);
 	}
 
