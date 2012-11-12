@@ -4,6 +4,94 @@
 		"selected_items":
 		[
 			[
+				"se",
+				"sentence"
+			],
+			[
+				"count",
+				"countSyllabels"
+			],
+			[
+				"json_",
+				"json_decode"
+			],
+			[
+				"all",
+				"allowedSyllables"
+			],
+			[
+				"sente",
+				"sentenceNumber"
+			],
+			[
+				"func_get",
+				"func_get_args"
+			],
+			[
+				"out",
+				"outputSentences"
+			],
+			[
+				"for",
+				"for	for (…) {…}"
+			],
+			[
+				"sle",
+				"selector"
+			],
+			[
+				"coun",
+				"countSyllabels"
+			],
+			[
+				"ret",
+				"return"
+			],
+			[
+				"exp",
+				"explode"
+			],
+			[
+				"cou",
+				"countSyllabels"
+			],
+			[
+				"syl",
+				"syllabelsList"
+			],
+			[
+				"crea",
+				"creator"
+			],
+			[
+				"json",
+				"jsonData"
+			],
+			[
+				"senten",
+				"sentences"
+			],
+			[
+				"p",
+				"poem"
+			],
+			[
+				"jso",
+				"json_encode"
+			],
+			[
+				"order",
+				"order_by"
+			],
+			[
+				"li",
+				"limit"
+			],
+			[
+				"Poem",
+				"PoemTemplate"
+			],
+			[
 				"lan",
 				"language"
 			],
@@ -14,10 +102,6 @@
 			[
 				"lang",
 				"languageFiles"
-			],
-			[
-				"se",
-				"section	Tag"
 			],
 			[
 				"back",
@@ -252,10 +336,6 @@
 				"request_url"
 			],
 			[
-				"p",
-				"platform"
-			],
-			[
 				"_G",
 				"_Google_Auth_Access_Token"
 			],
@@ -348,24 +428,12 @@
 				"property_exists"
 			],
 			[
-				"json",
-				"json_decode"
-			],
-			[
 				"_Co",
 				"_Computer_Client_Create"
 			],
 			[
 				"Re",
 				"Request_Data"
-			],
-			[
-				"json_",
-				"json_encode"
-			],
-			[
-				"li",
-				"li	Tag"
 			],
 			[
 				"me",
@@ -390,10 +458,6 @@
 			[
 				"proper",
 				"property"
-			],
-			[
-				"coun",
-				"countProperties"
 			],
 			[
 				"change",
@@ -450,80 +514,24 @@
 			[
 				"getC",
 				"getSortColumn"
-			],
-			[
-				"fixe",
-				"fixedHeaderElement"
-			],
-			[
-				"n",
-				"number"
-			],
-			[
-				"sal",
-				"salts"
-			],
-			[
-				"base",
-				"base64_encode"
-			],
-			[
-				"margin-",
-				"margin-left"
-			],
-			[
-				"fixed",
-				"fixedHeader"
-			],
-			[
-				"screen",
-				"screenGenerator"
-			],
-			[
-				"locati",
-				"locationGenerator"
-			],
-			[
-				"unit",
-				"unitsGenerator"
-			],
-			[
-				"printer",
-				"printerGenerator"
-			],
-			[
-				"detec",
-				"detection_string"
-			],
-			[
-				"Log",
-				"Logout"
-			],
-			[
-				"delete",
-				"delete_cookie"
-			],
-			[
-				"session_de",
-				"session_destroy"
-			],
-			[
-				"datatab",
-				"dataTables_empty"
-			],
-			[
-				"resp",
-				"response"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "/R/UFO-Slides/index.html",
+			"file": "application/libraries/tag.php",
 			"settings":
 			{
-				"buffer_size": 10082,
+				"buffer_size": 973,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/libraries/poem.php",
+			"settings":
+			{
+				"buffer_size": 2106,
 				"line_ending": "Windows"
 			}
 		}
@@ -588,30 +596,40 @@
 	},
 	"file_history":
 	[
-		"/R/The-Haiku-Poem-Machine/application/language/english/pages_lang.php",
-		"/R/The-Haiku-Poem-Machine/application/views/home_view.php",
-		"/R/The-Haiku-Poem-Machine/application/language/english/info_lang.php",
-		"/R/The-Haiku-Poem-Machine/application/libraries/ui_helper.php",
-		"/R/The-Haiku-Poem-Machine/application/language/english/home_lang.php",
-		"/R/The-Haiku-Poem-Machine/application/controllers/live.php",
-		"/R/The-Haiku-Poem-Machine/application/libraries/sentence.php",
-		"/R/The-Haiku-Poem-Machine/application/controllers/ajax.php",
+		"/C/xampp/htdocs/test_2.php",
+		"/C/Users/Bo/Desktop/test.php",
 		"/R/The-Haiku-Poem-Machine/application/libraries/poem.php",
-		"/R/The-Haiku-Poem-Machine/application/errors/error_php.php",
-		"/R/The-Haiku-Poem-Machine/application/language/english/errors_lang.php",
-		"/R/The-Haiku-Poem-Machine/application/controllers/home.php",
-		"/R/The-Haiku-Poem-Machine/application/models/sentences.php",
-		"/R/The-Haiku-Poem-Machine/application/language/english/ajax_lang.php",
 		"/R/The-Haiku-Poem-Machine/assets/js/script.js",
-		"/R/The-Haiku-Poem-Machine/application/libraries/sentenceclass.php",
+		"/R/The-Haiku-Poem-Machine/application/config/settings.php",
+		"/R/The-Haiku-Poem-Machine/application/controllers/live.php",
+		"/R/The-Haiku-Poem-Machine/application/views/home_view.php",
+		"/R/The-Haiku-Poem-Machine/application/language/english/home_lang.php",
+		"/R/The-Haiku-Poem-Machine/application/controllers/api.php",
+		"/R/The-Haiku-Poem-Machine/application/controllers/select.php",
+		"/R/The-Haiku-Poem-Machine/application/libraries/sentence.php",
+		"/R/The-Haiku-Poem-Machine/application/libraries/std_library.php",
+		"/R/The-Haiku-Poem-Machine/application/language/english/errors_lang.php",
+		"/R/The-Haiku-Poem-Machine/application/language/english/ajax_lang.php",
+		"/R/The-Haiku-Poem-Machine/application/controllers/ajax.php",
+		"/R/The-Haiku-Poem-Machine/assets/css/styles.css",
+		"/R/The-Haiku-Poem-Machine/application/core/MY_Lang.php",
+		"/R/The-Haiku-Poem-Machine/assets/css/style.css",
+		"/R/The-Haiku-Poem-Machine/application/libraries/ui_helper.php",
+		"/R/The-Haiku-Poem-Machine/application/controllers/home.php",
 		"/R/The-Haiku-Poem-Machine/application/config/autoload.php",
+		"/R/The-Haiku-Poem-Machine/application/config/config.php",
+		"/R/The-Haiku-Poem-Machine/application/models/poems.php",
+		"/R/UFO-Slides/index.html",
+		"/R/The-Haiku-Poem-Machine/application/language/english/pages_lang.php",
+		"/R/The-Haiku-Poem-Machine/application/language/english/info_lang.php",
+		"/R/The-Haiku-Poem-Machine/application/errors/error_php.php",
+		"/R/The-Haiku-Poem-Machine/application/models/sentences.php",
+		"/R/The-Haiku-Poem-Machine/application/libraries/sentenceclass.php",
 		"/R/The-Haiku-Poem-Machine/application/libraries/objects/poem.php",
 		"/R/The-Haiku-Poem-Machine/assets/js/standard.js",
 		"/R/The-Haiku-Poem-Machine/assets/css/standard.css",
 		"/R/The-Haiku-Poem-Machine/assets/js/view.js",
-		"/R/The-Haiku-Poem-Machine/application/config/config.php",
 		"/R/The-Haiku-Poem-Machine/application/controllers/add.php",
-		"/R/The-Haiku-Poem-Machine/application/config/settings.php",
 		"/R/ComputerInfo/application/config/autoload.php",
 		"/R/The-Haiku-Poem-Machine/application/config/routes.php",
 		"/R/The-Haiku-Poem-Machine/application/config/database.php",
@@ -631,7 +649,6 @@
 		"/R/Illution Site/Haiku/assets/css/view.css",
 		"/R/Illution Site/Haiku/assets/css/output.css",
 		"/R/Illution Site/Haiku/assets/css/chosen.css",
-		"/R/UFO-Slides/index.html",
 		"/R/UFO-Slides/css/utilities.css",
 		"/R/Illution Site/Haiku/application/config/database.php",
 		"/R/Illution Site/Haiku/application/models/addfield.php",
@@ -706,16 +723,7 @@
 		"/R/IllutionBootstrap/bootstrap/less/extra/bootstrap-toggle.less",
 		"/R/IllutionBootstrap/bootstrap/js/extra/bootstrap-toggle.js",
 		"/R/ComputerInfo/application/controllers/translations.php",
-		"/C/Users/Bo/AppData/Local/Google/Chrome/User Data/Default/Extensions/geooogfhpjdpeiphckpbgkhpbeobcaoi/4.0.33_0/content.js",
-		"/R/ComputerInfo/application/language/english/pages_lang.php",
-		"/R/ComputerInfo/application/language/english/datatables_lang.php",
-		"/R/ComputerInfo/application/views/datatables.php",
-		"/R/ComputerInfo/assets/translations/datatables/danish.txt",
-		"/R/ComputerInfo/assets/translations/datatables/english.txt",
-		"/R/ComputerInfo/application/language/english/ui_table_lang.php",
-		"/R/ComputerInfo/application/language/english/ui_table.php",
-		"/R/ComputerInfo/application/controllers/home.php",
-		"/R/ComputerInfo/assets/css/dataTables.bootstrap.css"
+		"/C/Users/Bo/AppData/Local/Google/Chrome/User Data/Default/Extensions/geooogfhpjdpeiphckpbgkhpbeobcaoi/4.0.33_0/content.js"
 	],
 	"find":
 	{
@@ -741,6 +749,20 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"(var)",
+			"is_null",
+			"Sending",
+			"dialogSentenceNumber",
+			"console.log",
+			"sentenceNumber",
+			"translations_syllabels",
+			",\"",
+			"\",",
+			"sentence-select",
+			"#title",
+			"home_desired_creator_name",
+			"$_COOKIE",
+			"Sentence",
 			"h3",
 			"Sentence",
 			"/Haiku/assets/images/",
@@ -854,21 +876,7 @@
 			"ComputerInfo",
 			">Identifier",
 			"<a href=\"#\" class=\"btn btn-primary\">Save changes</a>",
-			"<a href=\"#\" class=\"btn btn-primary\" data-dismiss=\"modal\">Save changes</a>",
-			"<a href=\"#\" class=\"btn\" data-dismiss=\"modal\">Close</a>",
-			"Close",
-			"close",
-			"Close",
-			"Edit {identifier}",
-			"lang->load",
-			"ComputerInfo",
-			"ComputerInfo ",
-			"ui_computers_page",
-			"Enheder",
-			"Printere",
-			"Screens",
-			"Skaerme",
-			"Rum"
+			"<a href=\"#\" class=\"btn btn-primary\" data-dismiss=\"modal\">Save changes</a>"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -876,6 +884,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			",",
 			"<?php echo $css_url; ?>chosen.css",
 			"../images/chosen-sprite.png",
 			"$this->_CI->config->item",
@@ -984,18 +993,18 @@
 			[
 				{
 					"buffer": 0,
-					"file": "/R/UFO-Slides/index.html",
+					"file": "application/libraries/tag.php",
 					"settings":
 					{
-						"buffer_size": 10082,
+						"buffer_size": 973,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6534,
-								6534
+								170,
+								170
 							]
 						],
 						"settings":
@@ -1003,11 +1012,41 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2087.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "application/libraries/poem.php",
+					"settings":
+					{
+						"buffer_size": 2106,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2091,
+								2091
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1023.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1073,24 +1112,116 @@
 		"selected_items":
 		[
 			[
+				"poem",
+				"application/libraries/poem.php"
+			],
+			[
+				"std",
+				"application/libraries/std_library.php"
+			],
+			[
+				"std_",
+				"application/libraries/std_library.php"
+			],
+			[
+				"sente",
+				"application/libraries/sentence.php"
+			],
+			[
+				"pe",
+				"application/libraries/poem.php"
+			],
+			[
+				"scri",
+				"assets/js/script.js"
+			],
+			[
+				"poe",
+				"application/libraries/poem.php"
+			],
+			[
+				"po",
+				"application/libraries/poem.php"
+			],
+			[
+				"er",
+				"application/language/english/errors_lang.php"
+			],
+			[
+				"aja",
+				"application/language/english/ajax_lang.php"
+			],
+			[
+				"styles",
+				"assets/css/styles.css"
+			],
+			[
+				"styl",
+				"assets/css/style.css"
+			],
+			[
+				"sett",
+				"application/config/settings.php"
+			],
+			[
+				"my_",
+				"application/core/MY_Lang.php"
+			],
+			[
 				"ui_",
 				"application/libraries/ui_helper.php"
 			],
 			[
-				"home",
+				"sty",
+				"assets/css/style.css"
+			],
+			[
+				"error_la",
+				"application/language/english/errors_lang.php"
+			],
+			[
+				"aja_l",
+				"application/language/english/ajax_lang.php"
+			],
+			[
+				"ajax_l",
+				"application/language/english/ajax_lang.php"
+			],
+			[
+				"hom_l",
 				"application/language/english/home_lang.php"
 			],
 			[
-				"home_la",
-				"application/language/english/home_lang.php"
+				"home_",
+				"application/views/home_view.php"
+			],
+			[
+				"h",
+				"application/controllers/home.php"
+			],
+			[
+				"aut",
+				"application/config/autoload.php"
+			],
+			[
+				"set",
+				"application/config/settings.php"
+			],
+			[
+				"co",
+				"application/config/config.php"
 			],
 			[
 				"sc",
 				"assets/js/script.js"
 			],
 			[
-				"aja",
-				"application/language/english/ajax_lang.php"
+				"home",
+				"application/views/home_view.php"
+			],
+			[
+				"home_la",
+				"application/language/english/home_lang.php"
 			],
 			[
 				"ui",
@@ -1101,16 +1232,8 @@
 				"application/config/autoload.php"
 			],
 			[
-				"scri",
-				"assets/js/script.js"
-			],
-			[
 				"hom.",
 				"application/controllers/home.php"
-			],
-			[
-				"sente",
-				"application/libraries/sentenceclass.php"
 			],
 			[
 				"live",
@@ -1131,10 +1254,6 @@
 			[
 				"conf",
 				"application/config/config.php"
-			],
-			[
-				"set",
-				"application/config/settings.php"
 			],
 			[
 				"lan/h",
@@ -1185,10 +1304,6 @@
 				"application/controllers/user_management.php"
 			],
 			[
-				"sty",
-				"assets/css/style.css"
-			],
-			[
 				"scre",
 				"application/libraries/screen.php"
 			],
@@ -1229,14 +1344,6 @@
 				"application/models/std_model.php"
 			],
 			[
-				"std_",
-				"application/libraries/std_library.php"
-			],
-			[
-				"std",
-				"application/libraries/std_library.php"
-			],
-			[
 				"rou",
 				"application/config/routes.php"
 			],
@@ -1267,10 +1374,6 @@
 			[
 				"user_c",
 				"application/libraries/user_control.php"
-			],
-			[
-				"home_",
-				"application/views/home_view.php"
 			],
 			[
 				"log_se",
@@ -1315,10 +1418,6 @@
 			[
 				"login_m",
 				"application/models/login_model.php"
-			],
-			[
-				"sett",
-				"application/config/settings.php"
 			],
 			[
 				"tabl",
@@ -1367,10 +1466,6 @@
 			[
 				"lang/me",
 				"application/language/english/messages_lang.php"
-			],
-			[
-				"aut",
-				"application/config/autoload.php"
 			],
 			[
 				"logmo",
@@ -1527,62 +1622,6 @@
 			[
 				"mes",
 				"application/language/english/messages_lang.php"
-			],
-			[
-				"inf_",
-				"application/language/english/info_lang.php"
-			],
-			[
-				"capla",
-				"application/language/english/captcha_lang.php"
-			],
-			[
-				"cap_l",
-				"application/language/english/captcha_lang.ph"
-			],
-			[
-				"mess",
-				"application/language/english/messages_lang.php"
-			],
-			[
-				"err_l",
-				"application/language/english/errors_lang.php"
-			],
-			[
-				"ho",
-				"application/controllers/home.php"
-			],
-			[
-				"home_v",
-				"application/views/home_view.php"
-			],
-			[
-				"s",
-				"sftp-config.json"
-			],
-			[
-				"cose",
-				"application/libraries/computerinfo_security.php"
-			],
-			[
-				"conf.php",
-				"application/config/config.php"
-			],
-			[
-				"confi",
-				"sftp-config.json"
-			],
-			[
-				"home.php",
-				"application/controllers/home.php"
-			],
-			[
-				"mo",
-				"application/views/models_view.php"
-			],
-			[
-				"ho.",
-				"application/controllers/home.php"
 			]
 		],
 		"width": 0.0
@@ -1598,7 +1637,7 @@
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 246.0,
 	"status_bar_visible": true
 }

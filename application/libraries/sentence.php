@@ -67,12 +67,12 @@ class Sentence extends Std_Library{
 	 * @access public
 	 * @return boolean
 	 */
-	public function Save () {
+	/*public function Save () {
 		if (!is_null($this->sentence) && !is_null($this->language)) {
 			return parent::Save();
 		} else {
 			return false;
 		}
-	}
+	}*/
 }
 ?>

@@ -68,6 +68,10 @@ body {
 	width:160px;	
 }
 
+.error {
+	width:500px;
+}
+
 #shareContainer{
 	width:500px;
 	margin:0px auto;

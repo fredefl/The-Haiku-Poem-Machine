@@ -34,5 +34,19 @@ class MY_Lang extends CI_Lang{
         
         return $return;
     }
+
+    public function array_line ($line, $params = null, $delemiter = ",") {
+         $return = parent::line($line);
+            
+        if($return === false){
+            return "$line";
+        }else{
+            if (!is_null($params)){
+                $return = $this->_ni_line($return, $params); 
+            }
+            $return = explode($delemiter, $return);
+            return $return;
+        }
+    }
 }
 ?>

@@ -28,7 +28,7 @@ function getUrlVars(){
 var currentSentenceNumber = 1;
 		var lang = getUrlVars()["lang"];
 		if(lang == undefined){
-			var lang = "";
+			var lang = userLanguage;
 		}
 /**
 * Downloads the newest poems for the poem showcase
@@ -46,7 +46,9 @@ function downloadFeed () {
 	  			return;
 	  		}
 	  		var poem = $('<a href="'+$("#base_url").val()+'poem/'+element.id+'"></a>');
-	  		poem.append('<p class="header">'+element.name+'</p>');
+	  		if (typeof element.title != "undefined") {
+	  			poem.append('<p class="header">'+element.title+'</p>');
+	  		}
 	  		var sentences = $('<div class="sentences"></div>');
 	  		$.each(element.sentences, function (sentenceIndex, sentence) {
 	  			sentences.append('<span class="sentence">'+sentence.sentence+"</span><br>");
@@ -103,13 +105,13 @@ $(function(){
 	* Fetches select data from server
 	* @param {No idea} I don't know
 	*/
-	function fetchSelect(val){
+	function fetchSelect(){
 		
 		if(working){
 			return false;
 		}
 		working = true;
-		$.getJSON($("#base_url").val()+'ajax/?language'+lang,{},function(jsonData){
+		$.getJSON($("#base_url").val()+'select/?language='+lang,{},function(jsonData){
 			if (typeof jsonData.error_message != "undefined") {
 				var boxTitle = jsonData.error_message;
 			} else {
@@ -122,43 +124,27 @@ $(function(){
 			$('#title').html(boxTitle);
 
 			var selectTitle = jsonData.selectTitle;
-			$.each(jsonData,function(sentenceNumber,sentences) {
-				if(sentenceNumber == 5 || sentenceNumber == 7){
+			if (typeof jsonData.selects != "undefined") {
+				$.each(jsonData.selects,function(arrayIndex,sentenceNumber) {
 					// Create options array
 					var options = '';
 					// Add a blank option
 					options+= '<option value=""></option>';
 					// Set the default text
-					var defaultText = sentenceNumber + ' ' + selectTitle;
-					// Loop through sentences
-					$.each(sentences,function(index,sentence){
-						options+= '<option value="' + sentence + '">' + sentence + '</option>';
-					});
+					var defaultText = selectTitle.replace("{number_of_syllabels}",sentenceNumber);;
+					if (typeof jsonData.sentences[sentenceNumber] != "undefined") {
+						// Loop through sentencesj 
+						$.each(jsonData.sentences[sentenceNumber],function(index,sentence){
+							options+= '<option value="' + sentence + '">' + sentence + '</option>';
+						});
+					}
 					// Add the select box
-					$('<select data-placeholder="'+defaultText+'" id="sentence' + currentSentenceNumber + '">'+ options +'</select>').appendTo(box);
+					$('<select data-placeholder="'+defaultText+'" data-syllabels="'+sentenceNumber+'" class="sentence-select">'+ options +'</select>').appendTo(box);
 					$('<img src="assets/images/add.png" style="margin-left:5px;" class="addIcon" id="addIcon' + currentSentenceNumber + '"></img>').appendTo(box);
 					
 					currentSentenceNumber++;
-				}
-			});
-			$.each(jsonData,function(sentenceNumber,sentences) {
-				if(sentenceNumber == '5') {
-					// Create options array
-					var options = '';
-					// Add a blank option
-					options+= '<option value=""></option>';
-					// Set the default text
-					var defaultText = sentenceNumber + ' ' + selectTitle;
-					// Loop through sentences
-					$.each(sentences,function(index,sentence){
-						options+= '<option value="' + sentence + '">' + sentence + '</option>';
-					});
-					// Add the select box
-					$('<select data-placeholder="'+defaultText+'" id="sentence' + currentSentenceNumber + '">'+ options +'</select>').appendTo(box);
-					$('<img src="assets/images/add.png" style="margin-left:5px;" class="addIcon" id="addIcon' + currentSentenceNumber + '"></img>').appendTo(box);
-				}
-			});
-			
+				});
+			}
 			refreshSelects();
 			
 			working = false;
@@ -167,7 +153,7 @@ $(function(){
 		
 	}
 	// Initially load the product select
-	fetchSelect('productSelect');
+	fetchSelect();
 	
 	
 	/**
@@ -189,6 +175,7 @@ $(function(){
 	$('#saveDialogName').keypress(function(event) {
   		if ( event.which == 13 ) {
      		$('#saveDialogSaveButton').click();
+     		$('#saveDialog').dialog("close");
 		}
 	});
 	
@@ -196,22 +183,67 @@ $(function(){
 	* When saveDialogSaveButton is clicked, send the data to the server.
 	*/
 	$('#saveDialogSaveButton').click(function () {
-		$('#creatorForm').val($('#saveDialogName').val());
 		ajaxCall($("#base_url").val()+'Pusher/send_message.php', { message : "update" });
-		sendSelectValues();
+		if (sendSelectValues($('#saveDialogName').val(),$('#saveDialogTitle').val()) === true) {
+			$("#saveDialog").dialog("close");
+		}
 	});
+
+	/**
+	 * This function shows an error
+	 * @param  {string} message The error message
+	 * @param  {string} alert   A translation for alert
+	 * @param {integer} time The number of miliseconds to show the dialog
+	 */
+	function showError (message, alert,time) {
+		time = time || 2000;
+		var error = $("#error").clone();
+		var html = error.html();
+		var html = html.replace("{alert}")
+		error.html();
+		error.attr("id","errorMessage");
+		error.css("display","");
+		setTimeout(function(){
+			error.remove();
+		},time);
+	}
 	
 	/**
 	* Sends the data(poem) to the server
 	*/
-	function sendSelectValues () {
-		var sentence1 = $('#sentence1 option:selected').val();	
-		var sentence2 = $('#sentence2 option:selected').val();	
-		var sentence3 = $('#sentence3 option:selected').val();	
-		$("#sentence1Form").val(sentence1);
-		$("#sentence2Form").val(sentence2);
-		$("#sentence3Form").val(sentence3);
-		$('#submitForm').submit();
+	function sendSelectValues (name,title) {
+		if ($(".sentence-select option:selected").length != $(".sentence-select").length) {
+			showError(translations.missing_fields,translations.alert,1500);
+			return;
+		}
+		var object = {
+			"creator" : name,
+			"language" : userLanguage,
+			"sentences" : [],
+			"title" : title
+		};
+		$(".sentence-select").each(function(index,element) {
+			if ($(element).attr("data-syllabels") !== "undefined" && countSyllabels($(element).val(),translation_vowels) == $(element).attr("data-syllabels")) {
+				object.sentences.push({
+					"sentence" : $(element).val(),
+					"language" : userLanguage,
+					"syllabels" : countSyllabels($(element).val(),translation_vowels)
+				});	
+			}
+		});
+		if (object.sentences.length != $(".sentence-select").length) {
+			showError(translations.no_sentences_match,translations.alert,1000);
+			return;
+		}
+		$.ajax({
+			url : $("#base_url").val()+"api/save",
+			type : "POST",
+			data : JSON.stringify(object),
+			error : function () {
+				showError(translations.an_error_occured,translations.alert,1500);
+			}
+		});
+		return true;
 	}
 	
 	/**
@@ -235,8 +267,9 @@ $(function(){
 	* When dialogSaveButton is clicked, add the data to the selects and close the dialog box
 	*/
 	$('#dialogSaveButton').click(function () {
-		saveDialog();
-		$("#dialog").dialog("close");
+		if (saveDialog() == true) {
+			$("#dialog").dialog("close");
+		}	
 	});
 	
 	/**
@@ -247,30 +280,40 @@ $(function(){
      		$('#dialogSaveButton').click();
 		}
 	});
-	
+			
+	/**
+	 * This function counts the number of syllabels
+	 * @param  {string} word          The word to count in
+	 * @param  {Array} syllabelsList The list of accepted syllabels
+	 * @return {integer}
+	 */
+	function countSyllabels (word, syllabelsList) {
+		var syllables = 0;
+		word = word.toLowerCase();
+		$.each(syllabelsList, function(index, element) {
+			syllables += (word.split(element).length - 1);
+		});
+
+		return syllables;
+	}
+
 	/**
 	* When a key is pressed in dialogSentence, count the number of syllables
 	*/
 	$('#dialogSentence').keyup(function(event) {
 		var target = event.target;
         var value = target.value.toLowerCase();
-		var sentenceNumber  = $('#dialogSentenceNumber').val();
+		var index  = $('#dialogSentenceNumber').val();
 		var allowedSyllables;
-		if(sentenceNumber != 2) {
-			allowedSyllables = 5;	
+
+		//Needs to be rethought
+		if($(".sentence-select").eq(index-1).attr("data-syllabels") !== "undefined") {
+			allowedSyllables = $(".sentence-select").eq(index-1).attr("data-syllabels");	
 		} else {
-			allowedSyllables = 7;
+			allowedSyllables = 5;
 		}
-		var syllables = 0;
-		syllables += (value.split("a").length - 1);
-		syllables += (value.split("e").length - 1);
-		syllables += (value.split("i").length - 1);
-		syllables += (value.split("o").length - 1);
-		syllables += (value.split("u").length - 1);
-		syllables += (value.split("y").length - 1);
-		syllables += (value.split("æ").length - 1);
-		syllables += (value.split("ø").length - 1);
-		syllables += (value.split("å").length - 1);
+
+		var syllables = countSyllabels(value,translation_vowels);
 		if(allowedSyllables == syllables) {
 			$('#dialogValidationIcon').attr("src","assets/images/validationOk.png");
 		} else {
@@ -286,27 +329,32 @@ $(function(){
 		$('#dialogSentence').blur();
 		$('html, body').animate({scrollTop:0}, 'fast');
 		// ---
-		var sentenceNumber = $('#dialogSentenceNumber').val();
+		var index = $('#dialogSentenceNumber').val();
 		var sentence = $('#dialogSentence').val();
-		removeSelection(sentenceNumber);
-		$('<option selected value="' + sentence + '">' + sentence + '</option>').appendTo("#sentence" + sentenceNumber);
-		$("#sentence"+sentenceNumber).trigger("liszt:updated");
+		if ($(".sentence-select").eq(index-1).attr("data-syllabels") == countSyllabels(sentence,translation_vowels)) {
+			removeSelection(index-1);
+			$('<option selected value="' + sentence + '">' + sentence + '</option>').appendTo($(".sentence-select").eq(index-1));//sentence-select
+			$(".sentence-select").eq(index-1).trigger("liszt:updated");
+			return true;
+		}
 	}
 	
 	/**
 	* Shows the "add your own sentence" dialog
-	* @param {Integer} sentenceNumber	The currently used select box (1-3)
+	* @param {Integer} index	The jQuery index of the selected box 
 	*/
-	function showAddDialog (sentenceNumber) {
+	function showAddDialog (index) {
 		var allowedSyllables;
-		if(sentenceNumber == 1 || sentenceNumber == 3) {
-			allowedSyllables = 5;	
+		//This section needs to be converted
+		if($(".sentence-select").eq(index-1).attr("data-syllabels") !== "undefined") {
+			allowedSyllables = $(".sentence-select").eq(index-1).attr("data-syllabels");	
 		} else {
-			allowedSyllables = 7;
+			allowedSyllables = 5;
 		}
-		$('#dialogLabel').html($('#dialogLabel').attr("data-translated").replace("{0}",allowedSyllables))
+
+		$('#dialogLabel').html($('#dialogLabel').attr("data-translated").replace("{number_of_syllabels}",allowedSyllables))
 		$('#dialogValidationIcon').attr("src","assets/images/validationError.png");
-		$('#dialogSentenceNumber').val(sentenceNumber);
+		$('#dialogSentenceNumber').val(index);
 		$('#dialogSentence').val('');
 		$('#dialog').dialog({
 			maxHeigth: 20,
@@ -329,8 +377,8 @@ $(function(){
 	* Removes all selections in the desired selectbox
 	* @param {Integer} sentenceNumber	The currently used select box (1-3)
 	*/
-	function removeSelection (sentenceNumber) {
-		$("#sentence" + sentenceNumber + " option:selected").removeAttr('selected');
+	function removeSelection (eq) {
+		$(".sentence-select").eq(eq).removeAttr('selected');
 	}
 	
 	/**
@@ -340,16 +388,12 @@ $(function(){
 		$("button").button();
 		$('#submitButton').show();
 		styleBrowsers();
-		$('body').fadeIn('slow');
-		$('#addIcon1').click(function(e) {
-			showAddDialog(1);
+		$('body').fadeIn('slow');//sentence-select
+		$(".addIcon").live("click",function () {
+			showAddDialog(index($(this).prev("div").prev("select"), $(".sentence-select"))+1);
 		});
-		$('#addIcon2').click(function(e) {
-			showAddDialog(2);
-		});
-		$('#addIcon3').click(function(e) {
-			showAddDialog(3);
-		});
+
+
 		/**
 		* When the Danish flag is clicked, send the user to the Danish page
 		*/
@@ -363,6 +407,18 @@ $(function(){
 			document.location = $("#base_url").val()+'?language=english';
 		});
 	};
+
+	function index (element, selector) {
+		for (var i = 0; i <= selector.length; i++) {
+			if (compare(selector.eq(i),element)) {
+				return i;
+			}
+		};
+	}
+
+	function compare (element, object) {
+		return ($(element).get(0) == $(object).get(0));
+	}
 	
 	// Variables
 	var pusher;

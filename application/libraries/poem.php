@@ -31,7 +31,7 @@ class Poem extends Std_Library{
 	 * @since 1.0
 	 * @access public
 	 */
-	public $name = null;
+	public $title = null;
 
 	/**
 	 * A short description of the poem
@@ -57,6 +57,14 @@ class Poem extends Std_Library{
 	 */
 	public $time_created = null;
 
+	/**
+	 * The tags that are associated with the poem
+	 * @since 1.0
+	 * @access public
+	 * @var array
+	 */
+	public $tags = null;
+
 	############ Class Settings ###################
 
 	/**
@@ -80,12 +88,17 @@ class Poem extends Std_Library{
 			"_CI"
 		);
 		$this->_INTERNAL_CREATED_TIME_PROPERTY = array("time_created");
+		$this->_INTERNAL_LINK_SAVE_DUPLICATE_FUNCTION = "OVERWRITE";
 		$this->_INTERNAL_LOAD_FROM_CLASS = array(
-			"sentences" => "Sentence"
+			"sentences" => "Sentence",
+			"tags" => "Tag"
 		);
-		$this->_INTERNAL_FORCE_ARRAY = array("sentences");
+		$this->_INTERNAL_NOT_ALLOWED_DUBLICATE_ROWS = 	array(
+			"title"
+		);
+		$this->_INTERNAL_FORCE_ARRAY = array("sentences","tags");
 		$this->_INTERNAL_DATABASE_EXPORT_INGNORE = array("id");
-		$this->_INTERNAL_LINK_PROPERTIES = array("sentences" => array("poem_sentences",array("poem_id" => "id"),"sentence_id"));
+		$this->_INTERNAL_LINK_PROPERTIES = array("sentences" => array("poem_sentences",array("poem_id" => "id"),"sentence_id"),"tags" => array("poem_tags",array("poem_id" => "id"),"tag_id"));
 	}
 }
 ?>
