@@ -20,6 +20,13 @@ body {
 	cursor:pointer;
 }
 
+#tag_select_chzn {
+	margin-left: -20px;
+	width: 300px;
+	margin-top:-15px;
+	margin-bottom: 10px;
+}
+
 #flagGB {
 	position:absolute;
 	right:20px;	
@@ -28,22 +35,6 @@ body {
 }
 
 /*Copyright and Share Containers and Styles */
-
-#All{
-		
-}
-
-#Creator{
-	
-}
-
-#Time{
-	
-}
-
-#Id{
-	
-}
 
 #nameDialogClose{
 	width:265px;	
@@ -79,6 +70,34 @@ body {
 	-webkit-user-select:none;
 	-moz-user-select:none;
 	cursor:default;	
+}
+
+.box-container {
+	width:500px;
+	margin:0px auto;
+	margin-top:-35px;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	cursor:default;	
+}
+
+.box {
+	border-radius:4px;
+	box-shadow:0 0 2px rgba(0,0,0,0.2);
+	border:1px solid #8a9ba0;
+	background: #F0F5F7;
+	padding:10px 10px 10px 10px;
+	margin-bottom: 55px;
+	position:relative;	
+	margin-left:auto;
+	margin-right:auto;
+	list-style:none;
+	font-size:18px;
+}
+
+.center-text {
+	text-align:center;
+	vertical-align:middle;
 }
 
 #share{
@@ -135,13 +154,14 @@ hr {
 	margin-left:auto;
 	margin-right:auto;
 	font-family: "Bonzai";
-	list-style:none;
-	text-align:center;
-	vertical-align:middle;
 	color:#CCC;
 	font-size:18px;
 }
  
+.left {
+	float: left;
+}
+
 /* End of Copyrigth and Share Styles */
 
 .addIcon_WebkitOpera {

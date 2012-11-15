@@ -45,7 +45,7 @@ function downloadFeed () {
 	  		if (element.sentences == null) {
 	  			return;
 	  		}
-	  		var poem = $('<a href="'+$("#base_url").val()+'poem/'+element.id+'"></a>');
+	  		var poem = $('<a href="'+$("#base_url").val()+'poem/'+element.identifier+'"></a>');
 	  		if (typeof element.title != "undefined") {
 	  			poem.append('<p class="header">'+element.title+'</p>');
 	  		}
@@ -78,7 +78,9 @@ $(function(){
 	function refreshSelects(){
 		var selects = questions.find('select');
 		// Improve the selects with the Chose plugin
-		selects.chosen();
+		selects.chosen({
+			no_results_text: translations.no_results_found
+		});
 		
 		// Listen for changes
 		selects.unbind('change').bind('change',function(){
@@ -111,7 +113,7 @@ $(function(){
 			return false;
 		}
 		working = true;
-		$.getJSON($("#base_url").val()+'select/?language='+lang,{},function(jsonData){
+		$.getJSON($("#base_url").val()+'select/'+collection+'?language='+lang,{},function(jsonData){
 			if (typeof jsonData.error_message != "undefined") {
 				var boxTitle = jsonData.error_message;
 			} else {
@@ -333,8 +335,9 @@ $(function(){
 		var sentence = $('#dialogSentence').val();
 		if ($(".sentence-select").eq(index-1).attr("data-syllabels") == countSyllabels(sentence,translation_vowels)) {
 			removeSelection(index-1);
-			$('<option selected value="' + sentence + '">' + sentence + '</option>').appendTo($(".sentence-select").eq(index-1));//sentence-select
-			$(".sentence-select").eq(index-1).trigger("liszt:updated");
+			$('<option selected value="' + sentence + '">' + sentence + '</option>').appendTo($(".sentence-select").eq(index-1));
+			$('<option value="' + sentence + '">' + sentence + '</option>').appendTo($('[data-syllabels="'+$(".sentence-select").eq(index-1).attr("data-syllabels")+'"]:not(:eq('+$(".sentence-select").eq(index-1)+'))'));
+			$('[data-syllabels="'+$(".sentence-select").eq(index-1).attr("data-syllabels")+'"]').trigger("liszt:updated");
 			return true;
 		}
 	}
@@ -392,7 +395,6 @@ $(function(){
 		$(".addIcon").live("click",function () {
 			showAddDialog(index($(this).prev("div").prev("select"), $(".sentence-select"))+1);
 		});
-
 
 		/**
 		* When the Danish flag is clicked, send the user to the Danish page

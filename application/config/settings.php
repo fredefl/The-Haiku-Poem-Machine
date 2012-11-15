@@ -8,6 +8,13 @@ $config["jquery_ui_js_url"] = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.
 
 $config["html5_shiv_url"] = "https://html5shiv.googlecode.com/svn/trunk/html5.js";
 
+/**
+ * The identifier of the "home" collection
+ */
+$config["home_collection_identifier"] = "sdopweo";
+
+$config["home_live_limit"] = 3;
+
 /*
 |--------------------------------------------------------------------------
 | Assets Location

@@ -2,7 +2,7 @@
 class Poem extends Std_Library{
 
 	/**
-	 * The database identifier for the sentence
+	 * The database identifier
 	 * @since 1.0
 	 * @access public
 	 * @var integer
@@ -24,6 +24,14 @@ class Poem extends Std_Library{
 	 * @var string
 	 */
 	public $creator = null;
+
+	/**
+	 * The string identifier of the poem
+	 * @since 1.0
+	 * @access public
+	 * @var string
+	 */
+	public $identifier = null;
 
 	/**
 	 * The name of the poem
@@ -98,7 +106,23 @@ class Poem extends Std_Library{
 		);
 		$this->_INTERNAL_FORCE_ARRAY = array("sentences","tags");
 		$this->_INTERNAL_DATABASE_EXPORT_INGNORE = array("id");
-		$this->_INTERNAL_LINK_PROPERTIES = array("sentences" => array("poem_sentences",array("poem_id" => "id"),"sentence_id"),"tags" => array("poem_tags",array("poem_id" => "id"),"tag_id"));
+		$this->_INTERNAL_LINK_PROPERTIES = array(
+			"sentences" => array("poem_sentences",array("poem_id" => "id"),"sentence_id"),
+			"tags" => array("poem_tags",array("poem_id" => "id"),"tag_id")
+		);
+	}
+
+	/**
+	 * This function overwrites the "Data_Created" method of the Std_Library
+	 * @since 1.0
+	 * @access public
+	 */
+	public function Data_Created () {
+		parent::Data_Created();
+		$this->_CI->load->helper("rand");
+		if (function_exists("Rand_Str")) {
+			$this->identifier = Rand_Str(32);
+		}
 	}
 }
 ?>

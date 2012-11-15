@@ -9,13 +9,22 @@
     <link rel="stylesheet" href="<?php echo $jquery_ui_css_url;?>jquery-ui.css"/>
     <script type="text/javascript">
         var translations = {
-            "alert" : "<?php echo $this->lang->line("errors_alert"); ?>",
-            "missing_fields" : "<?php echo $this->lang->line("errors_fields_missing"); ?>",
-            "no_sentences_match" : "<?php echo $this->lang->line("errors_no_sentences_matching"); ?>",
-            "an_error_occured" : "<?php echo $this->lang->line("errors_an_error_occured"); ?>"
+            "alert" : "<?= $this->lang->line("errors_alert"); ?>",
+            "missing_fields" : "<?= $this->lang->line("errors_fields_missing"); ?>",
+            "no_sentences_match" : "<?= $this->lang->line("errors_no_sentences_matching"); ?>",
+            "an_error_occured" : "<?= $this->lang->line("errors_an_error_occured"); ?>",
+            "no_results_found" : "<?= $this->lang->line("home_chosen_no_result"); ?>"
         }
         var userLanguage = "<?php echo $this->ui_helper->language; ?>";
         var translation_vowels = <?php echo json_encode($this->lang->array_line("home_vowels_list")); ?>;
+        var mode = "<?= $mode; ?>";
+
+        <?php
+            if (isset($collection)) {
+                echo 'var collection = "'.$collection.'";';
+            }
+        ?>
+
     </script>
     <!--[if lt IE 9]>
           <script src="<?php echo $html5_shiv_url; ?>"></script>
@@ -53,6 +62,18 @@
         <ul id="questions">
         	<li>
             	<p id="title"></p>
+
+                <select data-placeholder="<?= $this->lang->line("home_tag"); ?>" id="tag-select" multiple>
+                    <option>Test</option>
+                    <option>Test2</option>
+                    <option>Test3</option>
+                    <option>Test4</option>
+                    <option>Test4</option>
+                    <option>Test4</option>
+                    <option>Test4</option>
+                    <option>Test4</option>
+                </select>
+
                 <button id="submitButton" style="width:300px;margin-right:15px;display:none"><?php echo $this->lang->line("home_send"); ?></button>
             </li>
         </ul>
@@ -63,10 +84,12 @@
     </div>
 
     <div id="saveDialog" title="<?php echo $this->lang->line("home_save_dialog_title"); ?>" style="display:none; overflow:hidden">
-        <label for="saveDialogName" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;"><?php echo $this->lang->line("home_name"); ?></label>
-        <input type="text" id="saveDialogName" style="margin-left:34px;">
-        <label for="saveDialogTitle" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;"><?php echo $this->lang->line("home_title"); ?></label>
-        <input type="text" id="saveDialogTitle" style="margin-left:34px;">
+        <table>
+            <tr><td><label for="saveDialogName" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;"><?php echo $this->lang->line("home_name"); ?></label></td>
+            <td><input type="text" id="saveDialogName"></tr></td>
+            <tr><td><label for="saveDialogTitle" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;"><?php echo $this->lang->line("home_title"); ?></label></td>
+            <td><input type="text" id="saveDialogTitle"></td></tr>
+        </table>
         <button style="width:100%;margin-top:15px;" id="saveDialogSaveButton"><?php echo $this->lang->line("home_save"); ?></button>
     </div>
 
@@ -136,5 +159,10 @@
 	<script src="<?php echo $js_url; ?>script.js"></script>	
     <script src="<?php echo $js_url;?>standard.js"></script> 
     <script src="<?php echo $js_url;?>view.js"></script>
+    <script type="text/javascript">
+        $("#tag-select").chosen({
+            no_results_text: translations.no_results_found
+        });
+    </script>
 </body>
 </html>

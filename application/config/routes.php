@@ -37,8 +37,22 @@
 | in the URL cannot be matched to a valid route.
 |
 */
+if ((!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') || (isset($_SERVER["HTTP_REFERER"]) && $_SERVER["HTTP_REFERER"] == "CI/Windows")) {
+	$route["poem/(:any)"] = "api/poem/$1";
+} else {
+	$route["poem/(:any)"] = "ui/viewpoem/$1";
+}
 
-$route['default_controller'] = "home";
+$route["live"] = "api/live";
+$route["live/(:any)"] = "api/live/$1";
+$route["poem/save"] = "api/save";
+$route["select/(:any)"] = "api/select/$1";
+$route["collection/(:any)"] = "api/collection/$1";
+
+$route["(:any)/save"] = "ui/createpoemcollection/$1";
+$route["(:any)"] = "ui/viewcollection/$1";
+
+$route['default_controller'] = "ui/home";
 $route['404_override'] = '';
 
 

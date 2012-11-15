@@ -392,7 +392,7 @@ class Std_Library{
 	 * @since 1.0
 	 * @access private
 	 */
-	private $_CI = NULL;
+	protected $_CI = NULL;
 
 	/**
 	 * This array contains the std_library properties which is going to be ignored on export
