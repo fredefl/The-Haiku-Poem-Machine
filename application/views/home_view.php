@@ -3,9 +3,9 @@
 <head>
 	<meta charset="utf-8">
 	<title><?php echo $this->lang->line("info_app_title");?> - <?php echo $this->lang->line("pages_home");?></title>
-    <link rel="stylesheet" href="<?php echo $css_url; ?>style.css">
-    <link rel="stylesheet" href="<?php echo $css_url; ?>styles.css">
-    <link rel="stylesheet" href="<?php echo $css_url; ?>chosen.css" />
+    <link rel="stylesheet" href="<?php echo $base_url.$css_url; ?>style.css">
+    <link rel="stylesheet" href="<?php echo $base_url.$css_url; ?>styles.css">
+    <link rel="stylesheet" href="<?php echo $base_url.$css_url; ?>chosen.css" />
     <link rel="stylesheet" href="<?php echo $jquery_ui_css_url;?>jquery-ui.css"/>
     <script type="text/javascript">
         var translations = {
@@ -27,7 +27,7 @@
 
     </script>
     <!--[if lt IE 9]>
-          <script src="<?php echo $html5_shiv_url; ?>"></script>
+          <script src="<?php echo $base_url.$html5_shiv_url; ?>"></script>
     <![endif]-->
     <style type="text/css">
 	@font-face {
@@ -58,29 +58,49 @@
 	<input id="base_url" value="<?php echo $base_url; ?>" type="hidden">
     <input type="hidden" id="current_time" value="<?php echo $current_time ?>">
 
-    <div id="Container">
-        <ul id="questions">
-        	<li>
-            	<p id="title"></p>
+    <div id="create" class="disabledPage">
+        <div id="Container">
+            <ul id="questions">
+            	<li>
+                	<p id="title"></p>
 
-                <select data-placeholder="<?= $this->lang->line("home_tag"); ?>" id="tag-select" multiple>
-                    <option>Test</option>
-                    <option>Test2</option>
-                    <option>Test3</option>
-                    <option>Test4</option>
-                    <option>Test4</option>
-                    <option>Test4</option>
-                    <option>Test4</option>
-                    <option>Test4</option>
-                </select>
+                    <select data-placeholder="<?= $this->lang->line("home_tag"); ?>" id="tag-select" multiple>
+                        <option>Test</option>
+                        <option>Test2</option>
+                        <option>Test3</option>
+                        <option>Test4</option>
+                        <option>Test4</option>
+                        <option>Test4</option>
+                        <option>Test4</option>
+                        <option>Test4</option>
+                    </select>
 
-                <button id="submitButton" style="width:300px;margin-right:15px;display:none"><?php echo $this->lang->line("home_send"); ?></button>
-            </li>
-        </ul>
+                    <button id="submitButton" style="width:300px;margin-right:15px;display:none"><?php echo $this->lang->line("home_send"); ?></button>
+                </li>
+            </ul>
+        </div>
+        <div id="poemShowcaseContainer">
+        	<div id="poemShowcase">
+        	</div>
+        </div>
+
+        <div id="copyrightContainer">
+            <div id="copyright">
+                <a style="color:#70777a;" href="https://illution.dk"><?php echo $this->lang->line("info_copyright"); ?></a>
+            </div>
+        </div>
     </div>
-    <div id="poemShowcaseContainer">
-    	<div id="poemShowcase">
-    	</div>
+
+    <div id="view" class="disabledPage">
+        <div id="poemTemplate" style="display:none;">
+            <div class="box" style="width:480px;">
+                <p style="font-size:22px;" class="center-text"><strong>{title}</strong></p>
+                <div class="text" style="margin-left:40px;">
+                    {sentences}
+                </div>
+                <p><i> - {creator} : {date}</i></p>
+            </div>
+        </div>
     </div>
 
     <div id="saveDialog" title="<?php echo $this->lang->line("home_save_dialog_title"); ?>" style="display:none; overflow:hidden">
@@ -93,14 +113,14 @@
         <button style="width:100%;margin-top:15px;" id="saveDialogSaveButton"><?php echo $this->lang->line("home_save"); ?></button>
     </div>
 
-    <div id="shareContainer">
+    <!--<div id="shareContainer">
         <div id="share">
             <button id="All"><?php echo $this->lang->line("home_all_poems"); ?></button>
             <button id="Creator"><?php echo $this->lang->line("home_creator"); ?></button>
             <button id="Time"><?php echo $this->lang->line("home_time"); ?></button>
             <button id="Id"><?php echo $this->lang->line("home_id"); ?></button>
         </div>
-    </div>
+    </div>-->
 
     <div id="nameDialog" title="<?php echo $this->lang->line("home_desired_creator_name"); ?>" style="display:none; overflow:hidden">
         <label id="nameDialogLabel" for="Name" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;"><?php echo $this->lang->line("home_desired_creator_name"); ?></label>
@@ -138,12 +158,6 @@
         <button id="timeDialogClose"><?php echo $this->lang->line("home_search"); ?></button>
      </div>
 
-    <div id="copyrightContainer">
-        <div id="copyright">
-            <a style="color:#70777a;" href="https://illution.dk"><?php echo $this->lang->line("info_copyright"); ?></a>
-        </div>
-    </div>
-
     <div class="ui-state-error ui-corner-all error" id="error" style="display:none;" style="padding: 0 .7em;">
       <p>
         <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
@@ -155,10 +169,10 @@
 	<script src="<?php echo $jquery_url; ?>"></script>
     <script src="<?php echo $jquery_ui_js_url; ?>"></script>
     <script src="<?php echo $base_url; ?><?php echo $js_url;?>chosen.jquery.min.js"></script>  
-    <script src="<?php echo $js_url;?>pusher.min.js"></script>
-	<script src="<?php echo $js_url; ?>script.js"></script>	
-    <script src="<?php echo $js_url;?>standard.js"></script> 
-    <script src="<?php echo $js_url;?>view.js"></script>
+    <script src="<?php echo $base_url.$js_url;?>pusher.min.js"></script>
+	<script src="<?php echo $base_url.$js_url; ?>script.js"></script>	
+    <script src="<?php echo $base_url.$js_url;?>standard.js"></script> 
+    <script src="<?php echo $base_url.$js_url;?>view.js"></script>
     <script type="text/javascript">
         $("#tag-select").chosen({
             no_results_text: translations.no_results_found

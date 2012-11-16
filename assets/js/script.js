@@ -34,6 +34,9 @@ var currentSentenceNumber = 1;
 * Downloads the newest poems for the poem showcase
 */
 function downloadFeed () {
+	if (mode == "view") {
+		return;
+	}
 	$.ajax({
 	  url: $("#base_url").val()+'live/?language='+lang,
 	  success: function (data) {
@@ -66,6 +69,36 @@ function downloadFeed () {
 }
 
 $(function(){
+
+	if (typeof mode != undefined && mode == "view") {
+		$.ajax({
+			url : $("#base_url").val() + "collection/"+collection,
+			success : function (data) {
+				if (typeof data.poems != "undefined") {
+					$.each(data.poems,function (index,poem) {
+						var html = $("#poemTemplate").html();
+						var sentences = "";
+						html = html.replace("{title}",poem.title);
+						html = html.replace("{creator}",poem.creator);
+
+						var date = new Date(poem.time_created*1000);
+
+						$.each(poem.sentences,function(sentenceId,sentence) {
+							sentences += sentence.sentence+"<br>";
+						});
+						html = html.replace("{sentences}","<div>"+sentences+"</div>");
+						html = html.replace("{date}","<u>"+date.toUTCString()+"</u>");
+						$("#view").append(html);
+					});
+				}
+				$("#view").removeClass("disabledPage");
+				$("body").css("display","");
+			}
+		});
+		return;
+	} else {
+		$("#create").removeClass("disabledPage");
+	}
 	
 	downloadFeed();
 	
@@ -120,8 +153,8 @@ $(function(){
 				var boxTitle = jsonData.boxTitle;
 			}
 			// Add the flags
-			boxTitle += '<img id="flagDK" src="assets/images/dk.png"/>\
-						 <img id="flagGB" src="assets/images/gb.png"/>';
+			boxTitle += '<img id="flagDK" src="'+$("#base_url").val()+'assets/images/dk.png"/>\
+						 <img id="flagGB" src="'+$("#base_url").val()+'assets/images/gb.png"/>';
 			// Set the title of the box
 			$('#title').html(boxTitle);
 

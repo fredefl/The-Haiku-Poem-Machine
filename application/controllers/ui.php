@@ -11,6 +11,13 @@ class Ui extends CI_Controller {
 		self::_Load_Collection($identifier, "view");
 	}
 
+	/**
+	 * This function checks if a collection exists and add
+	 * @param string $identifier The collection identifier
+	 * @param string $mode       The operation "mode", options are atm "create" or "view"
+	 * @since 1.0
+	 * @access private
+	 */
 	private function _Load_Collection ($identifier = null, $mode = "view") {
 		$this->load->library("collection");
 		$Collection = new Collection();
@@ -43,7 +50,12 @@ class Ui extends CI_Controller {
 		self::CreatePoemCollection($this->config->item("home_collection_identifier"));
 	}
 
-
+	/**
+	 * This function shows a poem found by it's string identifier
+	 * @param string $identifier The poem stirng identifier
+	 * @since 1.0
+	 * @access public
+	 */
 	public function ViewPoem ($identifier = null) {
 		$this->load->library("poem");
 		$Poem = new Poem();
@@ -54,5 +66,11 @@ class Ui extends CI_Controller {
 		} else {
 			self::Home();
 		}
+	}
+
+	public function Collections () {
+		$this->load->model("collections");
+		$collections = $this->collections->Find($this->ui_helper->language);
+		var_dump($collections[0]->Export());
 	}
 }
