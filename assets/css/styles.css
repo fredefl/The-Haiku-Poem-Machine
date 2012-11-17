@@ -17,6 +17,7 @@ body{
 }
 
 a, a:visited {
+	color: #000;
 	text-decoration:none;
 	outline:none;
 	

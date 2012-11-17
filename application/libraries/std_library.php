@@ -884,6 +884,23 @@ class Std_Library{
 	}
 
 	/**
+	 * This function checks if the fields are usable
+	 * @since 1.4
+	 * @access private
+	 * @param object $object The object to check in
+	 * @param array $fields The fields array to evaluate
+	 * @return array
+	 */
+	private function _Check_Fields (&$object, $fields) {
+		foreach ($fields as $key => $field) {
+			if (!property_exists($object, $field)) {
+				unset($fields[$key]);
+			}
+		}
+		return $fields;
+	}
+
+	/**
 	 * This function loads data either by the $Id parameter or by the $Id property
 	 * @param integer|array $Params The database id to load data from, this parameter is optional,
 	 * if it's not deffined the $Id property value will be used, this can also be an associative array containing
@@ -896,7 +913,7 @@ class Std_Library{
 	 * );
 	 * Load($query;
 	 * @param boolean $Simple If this flag is set to true, then the Load From Class won't be done
-	 * @param array $Fields The fields to select, if not fields are chosen, then all fields are selected
+	 * @param array $Fields The fields to select, if no fields are chosen, then all fields are selected
 	 * @since 1.0
 	 * @access public
 	 * @return boolean If the load is succes with data is true returned else is false returned
@@ -911,6 +928,8 @@ class Std_Library{
 		if (is_null($Fields) || !is_array($Fields)) {
 			$FillFields = true;
 			$Fields = self::_Get_Fields();
+		} else {
+			$Fields = self::_Check_Fields($this,$Fields);
 		}
 		foreach ($Parameters as $Index => $Parameter) {
 			unset($Arguments[$Index]);

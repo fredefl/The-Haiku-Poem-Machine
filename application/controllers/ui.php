@@ -71,6 +71,8 @@ class Ui extends CI_Controller {
 	public function Collections () {
 		$this->load->model("collections");
 		$collections = $this->collections->Find($this->ui_helper->language);
-		var_dump($collections[0]->Export());
+		$this->load->view("collections_view",$this->ui_helper->ControllerInfo(array(
+			"collections" => $collections
+		)));
 	}
 }

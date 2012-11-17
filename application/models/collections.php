@@ -8,11 +8,12 @@ class Collections extends CI_Model{
 	 * @param integer $offset   An optional pageinate offset
 	 * @param string  $order_by An optional row to sort by
 	 * @param string  $order    The sort order "asc" or "desc"
+	 * @param array $fields The collection fields to load
 	 * @since 1.0
 	 * @access public
 	 * @return array
 	 */
-	public function Find ($language = null,$limit = null,$offset = 0,$order_by = "time_created",$order = "desc") {
+	public function Find ($language = null,$limit = null,$offset = 0,$order_by = "time_created",$order = "desc",$fields = array("identifier","creator","name","description","time_created")) {
 		$this->load->library("collection");
 		$collectionIds = array();
 		$query = $this->db->from("collection_languages")->where(array("language" => $language))->select("collection_id")->get();
@@ -39,7 +40,7 @@ class Collections extends CI_Model{
 
 		foreach ($query->result() as $row) {
 		 	$Collection = new Collection();
-		 	$Collection->Load($row->id);
+		 	$Collection->Load($row->id,false,$fields);
 		 	$collections[] = $Collection;
 		}
 		return $collections;

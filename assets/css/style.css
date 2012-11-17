@@ -11,6 +11,13 @@ body {
 	cursor:default;	
 }
 
+.description {
+	background-color: #F7F5F6;
+	margin:0px 40px;
+	font-style: italic;
+	font-size: 0.9em;
+}
+
 /* FLAGS */
 
 #flagDK {
