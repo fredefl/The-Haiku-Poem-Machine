@@ -13,7 +13,7 @@ class Collections extends CI_Model{
 	 * @access public
 	 * @return array
 	 */
-	public function Find ($language = null,$limit = null,$offset = 0,$order_by = "time_created",$order = "desc",$fields = array("identifier","creator","name","description","time_created")) {
+	public function Find ($language = null,$limit = null,$offset = null,$order_by = "time_created",$order = "desc",$fields = array("identifier","creator","name","description","time_created")) {
 		$this->load->library("collection");
 		$collectionIds = array();
 		$query = $this->db->from("collection_languages")->where(array("language" => $language))->select("collection_id")->get();
@@ -44,6 +44,32 @@ class Collections extends CI_Model{
 		 	$collections[] = $Collection;
 		}
 		return $collections;
+	}
+
+	/**
+	 * This function counts the number of available pages
+	 * @since 1.0
+	 * @access public
+	 * @param  string  $language    The language to check for
+	 * @param  integer $rowsPerPage The number of elements per oage
+	 * @return integer
+	 */
+	public function pageLimit ($language, $rowsPerPage = 10) {
+		$collectionsQuery = $this->db->from("collection_languages")->where(array("language" => $language))->select("collection_id")->get();
+		if ($collectionsQuery->num_rows() == 0) {
+			return 0;
+		}
+		$collections = array();
+		foreach ($collectionsQuery->result() as $row) {
+			$collections[] = $row->collection_id;
+		}
+		$query = $this->db->from("collections")->where_in("id",$collections)->select("id")->get();
+		$pages = $query->num_rows()/$rowsPerPage;
+		if (is_float($pages)) {
+			$pages = $pages+1;
+			$pages = (int)$pages;
+		}
+		return ($query->num_rows() > 0)? $pages : 0;
 	}
 }
 ?>

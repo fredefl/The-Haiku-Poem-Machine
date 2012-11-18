@@ -18,6 +18,7 @@
         var userLanguage = "<?php echo $this->ui_helper->language; ?>";
         var translation_vowels = <?php echo json_encode($this->lang->array_line("home_vowels_list")); ?>;
         var mode = "<?= $mode; ?>";
+        var base_url = "<?= $base_url; ?>";
 
         <?php
             if (isset($collection)) {
@@ -137,7 +138,7 @@
     <div id="dialog" title="<?php echo $this->lang->line("home_write_sentence"); ?>" style="display:none; overflow:hidden">
         <label id="dialogLabel" data-translated="<?php echo $this->lang->line("home_syllabels"); ?>" for="dialogSentence" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;"><?php echo $text_data['FiveSyllables']; ?></label>
         <input type="text" id="dialogSentence" style="width:240px;">
-        <img id="dialogValidationIcon" src="assets/images/validationError.png"/>
+        <img id="dialogValidationIcon" src="<?= $base_url; ?>assets/images/validationError.png"/>
         <input type="hidden" id="dialogSentenceNumber" style="width:100%;">
         <button style="width:100%;margin-top:10px;" id="dialogSaveButton"><?php echo $this->lang->line("home_save"); ?></button>
         <div id="syllables"></div>
@@ -170,6 +171,7 @@
     <script src="<?php echo $jquery_ui_js_url; ?>"></script>
     <script src="<?php echo $base_url; ?><?php echo $js_url;?>chosen.jquery.min.js"></script>  
     <script src="<?php echo $base_url.$js_url;?>pusher.min.js"></script>
+    <script type="text/javascript" src="<?= $base_url.$js_url."/error.js" ?>"></script>
 	<script src="<?php echo $base_url.$js_url; ?>script.js"></script>	
     <script src="<?php echo $base_url.$js_url;?>standard.js"></script> 
     <script src="<?php echo $base_url.$js_url;?>view.js"></script>

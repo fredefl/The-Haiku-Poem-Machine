@@ -39,16 +39,17 @@
 */
 if ((!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') || (isset($_SERVER["HTTP_REFERER"]) && $_SERVER["HTTP_REFERER"] == "CI/Windows")) {
 	$route["poem/(:any)"] = "api/poem/$1";
+	$route["live"] = "api/live";
+	$route["live/(:any)"] = "api/live/$1";
+	$route["poem/save"] = "api/save";
+	$route["select/(:any)"] = "api/select/$1";
+	$route["collections"] = "api/GetCollections";
 } else {
 	$route["poem/(:any)"] = "ui/viewpoem/$1";
+	$route["collections"] = "ui/collections";
 }
 
-$route["live"] = "api/live";
-$route["live/(:any)"] = "api/live/$1";
-$route["poem/save"] = "api/save";
-$route["select/(:any)"] = "api/select/$1";
 $route["collection/(:any)"] = "api/collection/$1";
-$route["collections"] = "ui/collections";
 
 $route["(:any)/view"] = "ui/viewcollection/$1";
 $route["(:any)/save"] = "api/createpoemcollection/$1";

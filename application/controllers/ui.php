@@ -68,11 +68,15 @@ class Ui extends CI_Controller {
 		}
 	}
 
+	/**
+	 * This function shows the collections view
+	 * @since 1.0
+	 * @access public
+	 */
 	public function Collections () {
 		$this->load->model("collections");
 		$collections = $this->collections->Find($this->ui_helper->language);
-		$this->load->view("collections_view",$this->ui_helper->ControllerInfo(array(
-			"collections" => $collections
-		)));
+		$this->load->view("collections_view",$this->ui_helper->ControllerInfo());
 	}
 }
+?>

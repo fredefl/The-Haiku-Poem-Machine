@@ -26,6 +26,7 @@ class Ui_Helper {
 	public $languageFiles = array(
 		"home",
 		"ajax",
+		"navigate",
 		"errors",
 		"info",
 		"pages"

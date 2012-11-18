@@ -174,4 +174,48 @@ class Api extends CI_Controller {
 			header("Status: 404 Not Found");
 		}
 	}
+
+	/**
+	 * This function outputs the next collections via a HTML template
+	 * @since 1.0
+	 * @access public
+	 */
+	public function GetCollections () {
+		$page = 1;
+		$rowsPerPage = 2;
+		$this->load->library("input");
+		if ($this->input->get("page") !== false) {
+			$page = $this->input->get("page");
+		}
+		if ($this->input->get("rows") !== false) {
+			$page = $this->input->get("rows");
+		}
+		if ($page == 1) {
+			$offset = 0;
+		} else if ($page == 2 && $rowsPerPage > 1) {
+			$offset = $page+$rowsPerPage-2;
+		} else if ($rowsPerPage > 1) {
+			$offset = $page+$rowsPerPage-1;
+		} else {
+			$offset = $page-1;
+		}
+		if ($offset < 0) {
+			$offset = round($page-1);
+		}
+		header('Content-type: application/json');
+		$this->load->model("collections");
+		$collections = $this->collections->Find($this->ui_helper->language,$rowsPerPage,$offset);
+		if ($collections === false) {
+			echo json_encode(array("offset" => $offset,"error_message" => $this->lang->line("errors_no_collections_found")));
+			return;
+		}
+		$output = array();
+		foreach ($collections as $key => $collection) {
+			if (isset($collections[$key]->time_created)) {
+				$collections[$key]->time_created = date($this->lang->line("home_date_time_format"),$collections[$key]->time_created);
+			}
+			$output[] = $collections[$key]->Export(); 
+		}
+		echo json_encode(array("offset" => $offset,"collections" => $output,"page" => $page,"pages" => $this->collections->pageLimit($this->ui_helper->language,$rowsPerPage)));
+	}
 }

@@ -223,25 +223,6 @@ $(function(){
 			$("#saveDialog").dialog("close");
 		}
 	});
-
-	/**
-	 * This function shows an error
-	 * @param  {string} message The error message
-	 * @param  {string} alert   A translation for alert
-	 * @param {integer} time The number of miliseconds to show the dialog
-	 */
-	function showError (message, alert,time) {
-		time = time || 2000;
-		var error = $("#error").clone();
-		var html = error.html();
-		var html = html.replace("{alert}")
-		error.html();
-		error.attr("id","errorMessage");
-		error.css("display","");
-		setTimeout(function(){
-			error.remove();
-		},time);
-	}
 	
 	/**
 	* Sends the data(poem) to the server
@@ -350,9 +331,9 @@ $(function(){
 
 		var syllables = countSyllabels(value,translation_vowels);
 		if(allowedSyllables == syllables) {
-			$('#dialogValidationIcon').attr("src","assets/images/validationOk.png");
+			$('#dialogValidationIcon').attr("src",base_url+"assets/images/validationOk.png");
 		} else {
-			$('#dialogValidationIcon').attr("src","assets/images/validationError.png");
+			$('#dialogValidationIcon').attr("src",base_url+"assets/images/validationError.png");
 		}
     });
 	
@@ -389,7 +370,7 @@ $(function(){
 		}
 
 		$('#dialogLabel').html($('#dialogLabel').attr("data-translated").replace("{number_of_syllabels}",allowedSyllables))
-		$('#dialogValidationIcon').attr("src","assets/images/validationError.png");
+		$('#dialogValidationIcon').attr("src",base_url+"assets/images/validationError.png");
 		$('#dialogSentenceNumber').val(index);
 		$('#dialogSentence').val('');
 		$('#dialog').dialog({

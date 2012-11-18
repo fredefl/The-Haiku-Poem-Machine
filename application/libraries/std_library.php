@@ -1939,9 +1939,9 @@ class Std_Library{
 	 * @return string
 	 */
 	private function _Get_Duplicate_Function ($property, $parent) {
-		if (!is_null($parent->_INTERNAL_LINK_SAVE_DUPLICATE_FUNCTION) && is_array($parent->_INTERNAL_LINK_SAVE_DUPLICATE_FUNCTION) && array_key_exists($property, $parent->_INTERNAL_LINK_SAVE_DUPLICATE_FUNCTION)) {
+		if (isset($parent->_INTERNAL_LINK_SAVE_DUPLICATE_FUNCTION) && is_array($parent->_INTERNAL_LINK_SAVE_DUPLICATE_FUNCTION) && array_key_exists($property, $parent->_INTERNAL_LINK_SAVE_DUPLICATE_FUNCTION)) {
 			return $parent->_INTERNAL_LINK_SAVE_DUPLICATE_FUNCTION[$property];
-		} else if (!is_null($parent->_INTERNAL_LINK_SAVE_DUPLICATE_FUNCTION)) {
+		} else if (isset($parent->_INTERNAL_LINK_SAVE_DUPLICATE_FUNCTION)) {
 			return $parent->_INTERNAL_LINK_SAVE_DUPLICATE_FUNCTION;
 		} else {
 			return "NONE";
