@@ -1,3 +1,8 @@
+/**
+ * This function parses the template and inserts the collection onto the page
+ * @param  {object} collection The collection JSON object
+ * @return {string}
+ */
 function templateCollection (collection) {
 	var templateHtml = $("#template").html();
 	var creator = collection.creator || translations.anonymous;
@@ -22,6 +27,10 @@ function templateCollection (collection) {
 	return template;
 }
 
+/**
+ * This function gets the current collections using the current page number.
+ * @param  {integer} currentPage The number of the current page
+ */
 function getData (currentPage) {
 	$("#errorMessage").hide();
 	page = currentPage;
@@ -58,6 +67,11 @@ function getData (currentPage) {
 	});	
 }
 
+/**
+ * The function that "creates" the buttons with the correct numbering
+ * @param  {integer} pages       The number of existing pages
+ * @param  {integer} currentPage The current page number, that should be highligted
+ */
 function pagination (pages, currentPage) {
 	$("#paginate-numbers").html("");
 	if (currentPage < 2) {

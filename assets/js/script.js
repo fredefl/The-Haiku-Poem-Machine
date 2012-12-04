@@ -26,10 +26,10 @@ function getUrlVars(){
 	return vars;
 }
 var currentSentenceNumber = 1;
-		var lang = getUrlVars()["lang"];
-		if(lang == undefined){
-			var lang = userLanguage;
-		}
+var lang = getUrlVars()["language"];
+if(lang == undefined){
+	var lang = userLanguage;
+}
 /**
 * Downloads the newest poems for the poem showcase
 */

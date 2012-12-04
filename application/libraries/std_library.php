@@ -830,7 +830,7 @@ class Std_Library{
 			}
 		}
 
-		if (self::_Isset("_INTERNAL_LAST_UPDATED_USER_PROPERTY") && !is_null($this->_INTERNAL_CURRENT_USER)) {
+		if (self::_Isset("_INTERNAL_LAST_UPDATED_USER_PROPERTY") && isset($this->_INTERNAL_CURRENT_USER)) {
 			if (is_array($this->_INTERNAL_LAST_UPDATED_USER_PROPERTY)) {
 				foreach ($this->_INTERNAL_LAST_UPDATED_USER_PROPERTY as $Property) {
 					if (property_exists($this, $Property)) {
@@ -844,7 +844,7 @@ class Std_Library{
 			}
 		}
 
-		if (self::_Isset("_INTERNAL_CREATED_USER_PROPERTY") && !is_null($this->_INTERNAL_CURRENT_USER)) {
+		if (self::_Isset("_INTERNAL_CREATED_USER_PROPERTY") && isset($this->_INTERNAL_CURRENT_USER)) {
 			if (is_array($this->_INTERNAL_CREATED_USER_PROPERTY)) {
 				foreach ($this->_INTERNAL_CREATED_USER_PROPERTY as $Property) {
 					if (property_exists($this, $Property)) {
@@ -2935,7 +2935,7 @@ class Std_Library{
 					$Query[$Key] = $Export[$Key];
 				} else {
 					if(self::_Abort_On_Empty()){
-						return false;
+						return true;
 					}
 				}
 			}
