@@ -37,18 +37,20 @@
 | in the URL cannot be matched to a valid route.
 |
 */
-if ((!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') || (isset($_SERVER["HTTP_REFERER"]) && $_SERVER["HTTP_REFERER"] == "CI/Windows")) {
+if ((!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')) {
+	$route["poem/save/(:any)"] = "api/save/$1";
 	$route["poem/(:any)"] = "api/poem/$1";
 	$route["live"] = "api/live";
 	$route["live/(:any)"] = "api/live/$1";
-	$route["poem/save"] = "api/save";
 	$route["select/(:any)"] = "api/select/$1";
 	$route["collections"] = "api/GetCollections";
+	$route["tags"] = "api/GetTags";
+	$route["collection/create"] = "api/CreateCollection";
 } else {
 	$route["poem/(:any)"] = "ui/viewpoem/$1";
 	$route["collections"] = "ui/collections";
+	$route["collection/create"] = "ui/CreateCollection";
 }
-
 $route["collection/(:any)"] = "api/collection/$1";
 
 $route["(:any)/view"] = "ui/viewcollection/$1";

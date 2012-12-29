@@ -31,6 +31,10 @@ class Ui extends CI_Controller {
 		}
 	}
 
+	public function CreateCollection () {
+		$this->load->view("create_collection_view",$this->ui_helper->ControllerInfo());
+	}
+
 	/**
 	 * This function loads up the home view with the collection info
 	 * @since 1.0

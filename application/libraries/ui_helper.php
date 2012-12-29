@@ -29,7 +29,8 @@ class Ui_Helper {
 		"navigate",
 		"errors",
 		"info",
-		"pages"
+		"pages",
+		"collection"
 	);
 
 	/**

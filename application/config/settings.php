@@ -41,6 +41,17 @@ $config['supported_languages'] = array("english","danish");
 
 /*
 |--------------------------------------------------------------------------
+| Supported Languages Names
+|--------------------------------------------------------------------------
+|
+| The names and values of the supported languages
+|
+*/
+
+$config['supported_languages_values'] = array("English" => "english","Danish" => "danish");
+
+/*
+|--------------------------------------------------------------------------
 | Image Location
 |--------------------------------------------------------------------------
 |

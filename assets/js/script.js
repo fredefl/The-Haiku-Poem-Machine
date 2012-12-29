@@ -1,17 +1,4 @@
 /**
-* 
-* @param {} 
-* @return {} 
-*/
-/**
-* Downloads the newest poems for the poem showcase
-* @param {String} pName    A name to display with greeting.
-* @return {String}   Returns a string value containing name and greeting
-*/
-function example () {
-	
-}
-/**
 * Get the GET variables from the url.
 */
 function getUrlVars(){
@@ -70,6 +57,28 @@ function downloadFeed () {
 
 $(function(){
 
+	$("#addTag").live("click",function () {
+		$('#addTagDialog').dialog({
+			maxHeigth: 20,
+			minWidth: 300,
+			maxWidth: 300,
+			resizable: false,
+			modal: true
+		});
+	});
+
+	$("#saveTagButton").live("click", function () {
+		if ($("#tagInput").val() != "" && $("#tag-select").find("option:contains('"+$("#tagInput").val()+"')")) {
+			$("#tag-select").append('<option selected>'+$("#tagInput").val()+'</option>').trigger("liszt:updated");
+
+			$("#tag-select").trigger("liszt:updated");
+
+			$("#tagInput").val("");
+
+			$('#addTagDialog').dialog("close");
+		}
+	});
+
 	if (typeof mode != undefined && mode == "view") {
 		$.ajax({
 			url : $("#base_url").val() + "collection/"+collection,
@@ -101,6 +110,22 @@ $(function(){
 	}
 	
 	downloadFeed();
+
+	$.get(base_url+"tags").success(function (data) {
+		var data = $.parseJSON(data);
+		if ($(data.tags).length == 0) {
+			return;
+		}
+		$.each(data.tags,function (index,element) {
+			$("#tag-select").append("<option>"+element+"</option>");
+
+			if (index == $(data.tags).length) {
+				$("#tag-select").chosen({
+		            no_results_text: translations.no_results_found
+		        });
+			}
+		});
+	});
 	
 	var questions = $('#questions');
 	var box = $('#title');
@@ -175,7 +200,7 @@ $(function(){
 					}
 					// Add the select box
 					$('<select data-placeholder="'+defaultText+'" data-syllabels="'+sentenceNumber+'" class="sentence-select">'+ options +'</select>').appendTo(box);
-					$('<img src="assets/images/add.png" style="margin-left:5px;" class="addIcon" id="addIcon' + currentSentenceNumber + '"></img>').appendTo(box);
+					$('<img src="'+base_url+'assets/images/add.png" style="margin-left:5px;" class="addIcon" id="addIcon' + currentSentenceNumber + '"></img>').appendTo(box);
 					
 					currentSentenceNumber++;
 				});
@@ -236,7 +261,8 @@ $(function(){
 			"creator" : name,
 			"language" : userLanguage,
 			"sentences" : [],
-			"title" : title
+			"title" : title,
+			"tags" : []
 		};
 		$(".sentence-select").each(function(index,element) {
 			if ($(element).attr("data-syllabels") !== "undefined" && countSyllabels($(element).val(),translation_vowels) == $(element).attr("data-syllabels")) {
@@ -247,12 +273,21 @@ $(function(){
 				});	
 			}
 		});
+
+		var tags = $("#tag-select").val();
+
+		for (var i = 0; i < tags.length; i++) {
+			object.tags.push({
+				"tag" : tags[i].toLowerCase()
+			});
+		};
+
 		if (object.sentences.length != $(".sentence-select").length) {
 			showError(translations.no_sentences_match,translations.alert,1000);
 			return;
 		}
 		$.ajax({
-			url : $("#base_url").val()+"api/save",
+			url : $("#base_url").val()+"poem/save/"+collection,
 			type : "POST",
 			data : JSON.stringify(object),
 			error : function () {

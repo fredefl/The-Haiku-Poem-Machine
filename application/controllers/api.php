@@ -23,7 +23,9 @@ class Api extends CI_Controller {
 			$Collection->Import(array("poems" => $Poem->id));
 			$Collection->Save();
 		} else {
-			header("Status: 400 Bad Request");
+			header("Status: 404 Not Found");
+			echo json_encode(array("error" => "400"));
+			die();
 		}
 	}
 
@@ -159,6 +161,36 @@ class Api extends CI_Controller {
 	}
 
 	/**
+	 * This function outputs all the avaiable tags,
+	 * use $_GET["limit"] to limit the amount of tags shown,
+	 * and use $_GET["search"] to search
+	 * @since 1.0
+	 * @access public
+	 */
+	public function GetTags () {
+		$this->load->model("tags");
+
+		$limit = null;
+		$search = null;
+
+		if (isset($_GET["limit"])) {
+			$limit = $_GET["limit"];
+		}
+
+		if (isset($_GET["search"])) {
+			$search = $_GET["search"];
+		}
+
+		$tags = $this->tags->Get($limit, $search);
+
+		if ($tags !== false) {
+			echo json_encode(array("tags" => $tags));
+		} else {
+			echo json_encode(array("error_message" => $this->lang->line("errors_no_tags_found"),"error" => "404"));
+		}
+	}
+
+	/**
 	 * This function outputs
 	 * @param string $identifier The string identifier for the poem
 	 * @since 1.0
@@ -172,6 +204,31 @@ class Api extends CI_Controller {
 			echo json_encode($Poem->Export());
 		} else {
 			header("Status: 404 Not Found");
+		}
+	}
+
+	/**
+	 * This function creates a collection
+	 * @since 1.0
+	 * @access public
+	 */
+	public function CreateCollection () {
+		if ($_SERVER['REQUEST_METHOD'] == "POST" && file_get_contents("php://input") !== false)  {
+			$this->load->library("collection");
+			$Collection = new Collection();
+			$Collection->Import(json_decode(file_get_contents("php://input"),true));
+
+			$Collection->Debug($Collection->Export());
+
+			if ($Collection->Save()) {
+				echo json_encode(array("status" => "success"));
+			} else {
+				echo json_encode(array("status" => "fail"));
+			}
+		} else {
+			header("Status: 404 Not Found");
+			echo json_encode(array("error" => "400"));
+			die();
 		}
 	}
 

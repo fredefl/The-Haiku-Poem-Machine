@@ -66,15 +66,10 @@
                 	<p id="title"></p>
 
                     <select data-placeholder="<?= $this->lang->line("home_tag"); ?>" id="tag-select" multiple>
-                        <option>Test</option>
-                        <option>Test2</option>
-                        <option>Test3</option>
-                        <option>Test4</option>
-                        <option>Test4</option>
-                        <option>Test4</option>
-                        <option>Test4</option>
-                        <option>Test4</option>
+                        
                     </select>
+                    
+                    <img src="<?php echo $base_url; ?>assets/images/add.png" title="<?php echo $this->lang->line("home_add_tag"); ?>" style="margin-bottom:15px;margin-right:-20px;" id="addTag"></img>
 
                     <button id="submitButton" style="width:300px;margin-right:15px;display:none"><?php echo $this->lang->line("home_send"); ?></button>
                 </li>
@@ -112,6 +107,14 @@
             <td><input type="text" id="saveDialogTitle"></td></tr>
         </table>
         <button style="width:100%;margin-top:15px;" id="saveDialogSaveButton"><?php echo $this->lang->line("home_save"); ?></button>
+    </div>
+
+    <div id="addTagDialog" title="<?php echo $this->lang->line("home_add_tag"); ?>" style="display:none; overflow:hidden">
+        <table>
+            <tr><td><label for="tagInput" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;"><?php echo $this->lang->line("home_tag"); ?></label></td>
+            <td><input type="text" id="tagInput" style="width:127%;"></td></tr>
+        </table>
+        <button style="width:100%;margin-top:15px;" id="saveTagButton"><?php echo $this->lang->line("home_save"); ?></button>
     </div>
 
     <!--<div id="shareContainer">
@@ -175,10 +178,5 @@
 	<script src="<?php echo $base_url.$js_url; ?>script.js"></script>	
     <script src="<?php echo $base_url.$js_url;?>standard.js"></script> 
     <script src="<?php echo $base_url.$js_url;?>view.js"></script>
-    <script type="text/javascript">
-        $("#tag-select").chosen({
-            no_results_text: translations.no_results_found
-        });
-    </script>
 </body>
 </html>

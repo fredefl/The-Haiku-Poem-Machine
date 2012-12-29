@@ -102,13 +102,15 @@ class Poem extends Std_Library{
 			"tags" => "Tag"
 		);
 		$this->_INTERNAL_NOT_ALLOWED_DUBLICATE_ROWS = 	array(
-			"title"
+			"title",
+			"creator",
+			"language"
 		);
 		$this->_INTERNAL_FORCE_ARRAY = array("sentences","tags");
 		$this->_INTERNAL_DATABASE_EXPORT_INGNORE = array("id");
 		$this->_INTERNAL_LINK_PROPERTIES = array(
-			"sentences" => array("poem_sentences",array("poem_id" => "id"),"sentence_id"),
-			"tags" => array("poem_tags",array("poem_id" => "id"),"tag_id")
+			"sentences" => 	array("poem_sentences",	array("poem_id" => "id"),"sentence_id"),
+			"tags" 		=> 	array("poem_tags",		array("poem_id" => "id"),"tag_id")
 		);
 	}
 
@@ -121,7 +123,7 @@ class Poem extends Std_Library{
 		parent::Data_Created();
 		$this->_CI->load->helper("rand");
 		if (function_exists("Rand_Str")) {
-			$this->identifier = Rand_Str(32);
+			$this->identifier = Rand_Str(6);
 		}
 	}
 }

@@ -27,4 +27,5 @@ $lang["home_title"] = "Title";
 $lang["home_chosen_no_result"] = "No results found";
 $lang["home_tag"] = "Tag";
 $lang["home_date_time_format"] = "d/m-Y:m:i:s";
-?>
+$lang["home_add_tag"] = "Add tag";
+?> 
