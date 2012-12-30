@@ -68,6 +68,44 @@ class Api extends CI_Controller {
 	}
 
 	/**
+	 * This endpoint outputs all the poems assosiated with a tag
+	 * @since 1.0
+	 * @access public
+	 * @param string $tag The tag to search for
+	 */
+	public function GetPoemByStringTag ($tag) {
+		$this->load->library("tag");
+		$TagObject = new Tag();
+		if ($TagObject->Load(array("tag" => $tag))) {
+			$this->load->model("tags");
+			$poems = $this->tags->GetPoemsByTag($TagObject->id);
+			if ($tag !== false) {
+				echo json_encode(array("poems" => $poems));
+			} else {
+				echo json_encode(array("error" => "404"));
+			}
+		} else {
+			echo json_encode(array("error" => "404"));
+		}
+	}
+
+	/**
+	 * This endpoint outputs all the poems assosiated with a tag
+	 * @since 1.0
+	 * @access public
+	 * @param integer $tag The id of the tag to search for
+	 */
+	public function GetPoemByIdTag ($tag) {
+		$this->load->model("tags");
+		$poems = $this->tags->GetPoemsByTag($tag);
+		if ($poems !== false) {
+			echo json_encode(array("poems" => $poems));
+		} else {
+			echo json_encode(array("error" => "404"));
+		}
+ 	}
+
+	/**
 	 * This function loads up a collection by it's string identifier
 	 * @since 1.0
 	 * @access public
@@ -218,10 +256,8 @@ class Api extends CI_Controller {
 			$Collection = new Collection();
 			$Collection->Import(json_decode(file_get_contents("php://input"),true));
 
-			$Collection->Debug($Collection->Export());
-
 			if ($Collection->Save()) {
-				echo json_encode(array("status" => "success"));
+				echo json_encode(array("status" => "success","identifier" => $Collection->identifier,"url" => $this->config->item("base_url") . "/" . $Collection->identifier));
 			} else {
 				echo json_encode(array("status" => "fail"));
 			}

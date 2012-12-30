@@ -13,7 +13,8 @@
             "missing_fields" : "<?= $this->lang->line("errors_fields_missing"); ?>",
             "no_sentences_match" : "<?= $this->lang->line("errors_no_sentences_matching"); ?>",
             "an_error_occured" : "<?= $this->lang->line("errors_an_error_occured"); ?>",
-            "no_results_found" : "<?= $this->lang->line("home_chosen_no_result"); ?>"
+            "no_results_found" : "<?= $this->lang->line("home_chosen_no_result"); ?>",
+            "unlimited" : "<?= $this->lang->line("home_unlimited"); ?>"
         }
         var userLanguage = "<?php echo $this->ui_helper->language; ?>";
         var translation_vowels = <?php echo json_encode($this->lang->array_line("home_vowels_list")); ?>;
@@ -69,7 +70,7 @@
                         
                     </select>
                     
-                    <img src="<?php echo $base_url; ?>assets/images/add.png" title="<?php echo $this->lang->line("home_add_tag"); ?>" style="margin-bottom:15px;margin-right:-20px;" id="addTag"></img>
+                    <img src="<?php echo $base_url; ?>assets/images/add.png" title="<?php echo $this->lang->line("home_add_tag"); ?>" style="margin-bottom:15px;margin-right:-20px; cursor:pointer;" id="addTag"></img>
 
                     <button id="submitButton" style="width:300px;margin-right:15px;display:none"><?php echo $this->lang->line("home_send"); ?></button>
                 </li>
@@ -117,14 +118,13 @@
         <button style="width:100%;margin-top:15px;" id="saveTagButton"><?php echo $this->lang->line("home_save"); ?></button>
     </div>
 
-    <!--<div id="shareContainer">
+    <div id="shareContainer">
         <div id="share">
-            <button id="All"><?php echo $this->lang->line("home_all_poems"); ?></button>
-            <button id="Creator"><?php echo $this->lang->line("home_creator"); ?></button>
-            <button id="Time"><?php echo $this->lang->line("home_time"); ?></button>
-            <button id="Id"><?php echo $this->lang->line("home_id"); ?></button>
+            <button href="<?= $base_url; ?>/collection/create"><?php echo $this->lang->line("collection_create"); ?></button>
+            <button href="<?php echo $base_url.$collection; ?>/view"><?php echo $this->lang->line("home_poems"); ?></button>
+            <button href="<?php echo $base_url; ?>collections"><?php echo $this->lang->line("home_collections"); ?></button>
         </div>
-    </div>-->
+    </div>
 
     <div id="nameDialog" title="<?php echo $this->lang->line("home_desired_creator_name"); ?>" style="display:none; overflow:hidden">
         <label id="nameDialogLabel" for="Name" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;"><?php echo $this->lang->line("home_desired_creator_name"); ?></label>
@@ -175,8 +175,12 @@
     <script src="<?php echo $base_url; ?><?php echo $js_url;?>chosen.jquery.min.js"></script>  
     <script src="<?php echo $base_url.$js_url;?>pusher.min.js"></script>
     <script type="text/javascript" src="<?= $base_url.$js_url."/error.js" ?>"></script>
-	<script src="<?php echo $base_url.$js_url; ?>script.js"></script>	
-    <script src="<?php echo $base_url.$js_url;?>standard.js"></script> 
-    <script src="<?php echo $base_url.$js_url;?>view.js"></script>
+	<script src="<?php echo $base_url.$js_url; ?>script.js"></script>
+    <script type="text/javascript">
+        $("button").button();
+        $('button[href]').live("click",function () {
+            window.location = $(this).attr("href");
+        });
+    </script>
 </body>
 </html>

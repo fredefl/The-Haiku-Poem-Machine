@@ -28,4 +28,7 @@ $lang["home_chosen_no_result"] = "No results found";
 $lang["home_tag"] = "Tag";
 $lang["home_date_time_format"] = "d/m-Y:m:i:s";
 $lang["home_add_tag"] = "Add tag";
+$lang["home_unlimited"] = "Unlimited";
+$lang["home_collections"] = "Collections";
+$lang["home_poems"] = "Poems";
 ?> 

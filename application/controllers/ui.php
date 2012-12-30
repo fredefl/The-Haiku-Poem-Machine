@@ -82,5 +82,28 @@ class Ui extends CI_Controller {
 		$collections = $this->collections->Find($this->ui_helper->language);
 		$this->load->view("collections_view",$this->ui_helper->ControllerInfo());
 	}
+
+	public function PoemsByTag ($tag) {
+		$this->load->library("tag");
+		$Tag = new Tag();
+		if ($Tag->Load(array("tag" => $tag))) {
+			$this->load->model("tags");
+			$poems = $this->tags->GetPoemsByTag($Tag->id);
+			if ($poems !== false) {
+				$this->load->view("tags_view",$this->ui_helper->ControllerInfo(array(
+					"poems" => $poems
+				)));
+			} else {
+				$this->load->view("tags_view",$this->ui_helper->ControllerInfo(array(
+					"error" => "no_poems"
+				)));
+			}
+		} else {
+			$this->load->view("tags_view",$this->ui_helper->ControllerInfo(array(
+				"error" => "tag_not_found",
+				"tag" => $tag
+			)));
+		}
+	}
 }
 ?>

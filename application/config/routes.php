@@ -46,11 +46,15 @@ if ((!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_RE
 	$route["collections"] = "api/GetCollections";
 	$route["tags"] = "api/GetTags";
 	$route["collection/create"] = "api/CreateCollection";
+	$route["tag/(:num)"] = "api/GetPoemByIdTag/$1";
+	$route["tag/(:any)"] = "api/GetPoemByStringTag/$1";
 } else {
 	$route["poem/(:any)"] = "ui/viewpoem/$1";
 	$route["collections"] = "ui/collections";
 	$route["collection/create"] = "ui/CreateCollection";
+	$route["tag/(:any)"] = "ui/PoemsByTag/$1";
 }
+
 $route["collection/(:any)"] = "api/collection/$1";
 
 $route["(:any)/view"] = "ui/viewcollection/$1";

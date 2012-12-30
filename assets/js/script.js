@@ -191,7 +191,14 @@ $(function(){
 					// Add a blank option
 					options+= '<option value=""></option>';
 					// Set the default text
-					var defaultText = selectTitle.replace("{number_of_syllabels}",sentenceNumber);;
+					
+					if (sentenceNumber == "unlimited") {
+						var sentenceNumberText = translations.unlimited;
+					} else {
+						var sentenceNumberText = sentenceNumber;
+					}
+
+					var defaultText = selectTitle.replace("{number_of_syllabels}",sentenceNumberText);;
 					if (typeof jsonData.sentences[sentenceNumber] != "undefined") {
 						// Loop through sentencesj 
 						$.each(jsonData.sentences[sentenceNumber],function(index,sentence){
@@ -265,11 +272,11 @@ $(function(){
 			"tags" : []
 		};
 		$(".sentence-select").each(function(index,element) {
-			if ($(element).attr("data-syllabels") !== "undefined" && countSyllabels($(element).val(),translation_vowels) == $(element).attr("data-syllabels")) {
+			if ($(element).attr("data-syllabels") !== "undefined" && ($(element).attr("data-syllabels") == "unlimited" || countSyllabels($(element).val(),translation_vowels) == $(element).attr("data-syllabels"))) {
 				object.sentences.push({
 					"sentence" : $(element).val(),
 					"language" : userLanguage,
-					"syllabels" : countSyllabels($(element).val(),translation_vowels)
+					"syllabels" : ($(element).attr("data-syllabels") == "unlimited") ? "unlimited" : countSyllabels($(element).val(),translation_vowels)
 				});	
 			}
 		});
@@ -365,7 +372,7 @@ $(function(){
 		}
 
 		var syllables = countSyllabels(value,translation_vowels);
-		if(allowedSyllables == syllables) {
+		if(allowedSyllables == syllables || (allowedSyllables == "unlimited") && syllables > 0) {
 			$('#dialogValidationIcon').attr("src",base_url+"assets/images/validationOk.png");
 		} else {
 			$('#dialogValidationIcon').attr("src",base_url+"assets/images/validationError.png");
@@ -382,7 +389,7 @@ $(function(){
 		// ---
 		var index = $('#dialogSentenceNumber').val();
 		var sentence = $('#dialogSentence').val();
-		if ($(".sentence-select").eq(index-1).attr("data-syllabels") == countSyllabels(sentence,translation_vowels)) {
+		if ($(".sentence-select").eq(index-1).attr("data-syllabels") == countSyllabels(sentence,translation_vowels) || $(".sentence-select").eq(index-1).attr("data-syllabels") == "unlimited") {
 			removeSelection(index-1);
 			$('<option selected value="' + sentence + '">' + sentence + '</option>').appendTo($(".sentence-select").eq(index-1));
 			$('<option value="' + sentence + '">' + sentence + '</option>').appendTo($('[data-syllabels="'+$(".sentence-select").eq(index-1).attr("data-syllabels")+'"]:not(:eq('+$(".sentence-select").eq(index-1)+'))'));
@@ -404,7 +411,13 @@ $(function(){
 			allowedSyllables = 5;
 		}
 
-		$('#dialogLabel').html($('#dialogLabel').attr("data-translated").replace("{number_of_syllabels}",allowedSyllables))
+		if (allowedSyllables == "unlimited") {
+			var allowedSyllablesText = translations.unlimited;
+		} else {
+			var allowedSyllablesText = allowedSyllables;
+		}
+
+		$('#dialogLabel').html($('#dialogLabel').attr("data-translated").replace("{number_of_syllabels}",allowedSyllablesText))
 		$('#dialogValidationIcon').attr("src",base_url+"assets/images/validationError.png");
 		$('#dialogSentenceNumber').val(index);
 		$('#dialogSentence').val('');

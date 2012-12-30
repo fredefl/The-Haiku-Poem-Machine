@@ -18,6 +18,20 @@ body {
 	font-size: 0.9em;
 }
 
+.shadow:hover, .shadow:focus, .shadow:active {
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,.3);
+	-moz-box-shadow   : 0 0 5px rgba(0,0,0,.3);
+	box-shadow        : 0 0 5px rgba(0,0,0,.3);
+	border: 1px solid #5897fb;
+}
+
+.shadow-not-valid {
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,.3);
+	-moz-box-shadow   : 0 0 5px rgba(0,0,0,.3);
+	box-shadow        : 0 0 5px rgba(0,0,0,.3);
+	border: 1px solid #FF3333;
+}
+
 /* FLAGS */
 
 #flagDK {
@@ -84,7 +98,7 @@ body {
 }
 
 #shareContainer{
-	width:500px;
+	width:520px;
 	margin:0px auto;
 	margin-top:-35px;
 	-webkit-user-select:none;
@@ -129,7 +143,7 @@ body {
 	box-shadow:0 0 2px rgba(0,0,0,0.2);
 	border:1px solid #8a9ba0;
 	background: #F0F5F7;
-	padding:10px 10px 10px 10px;
+	padding:10px 0px 10px 0px;
 	margin-bottom: 55px;
 	height:50px;
 	position:relative;	
