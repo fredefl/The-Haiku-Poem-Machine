@@ -2,7 +2,7 @@
 	border-radius:4px;
 	box-shadow:0 0 2px rgba(0,0,0,0.2);
 	border:1px solid #8a9ba0;
-	background:url('/Haiku/assets/images/section_bg.png') repeat-x #f0f5f7;
+	background:url('../images/section_bg.png') repeat-x #f0f5f7;
 	padding:0 20px 20px;
 	margin-bottom: 20px;
 	position:relative;
@@ -30,7 +30,7 @@
 
 
 html{
-	background:url('/Haiku/assets/images/tile_bg.png') #b0b0b0;
+	background:url('../images/tile_bg.png') #b0b0b0;
 	position:relative;
 }
 

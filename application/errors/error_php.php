@@ -1,8 +1,10 @@
-<?php
-$severity = str_replace("<p>","",str_replace("</p>","",$severity));
-$message = str_replace("<p>","",str_replace("</p>","",$message));
-$filepath = str_replace("<p>","",str_replace("</p>","",$filepath));
-$line = str_replace("<p>","",str_replace("</p>","",$line));
-include 'http://illution.dk/Error.php?Severity='.urlencode($severity).'&Message='.urlencode($message).'&FilePath='.urlencode($filepath).'&Line='.urlencode($line).'&Method=PHP&System=Haiku';
-die();
-?>
+<div style="border:1px solid #990000;padding-left:20px;margin:0 0 10px 0;">
+
+<h4>A PHP Error was encountered</h4>
+
+<p>Severity: <?php echo $severity; ?></p>
+<p>Message:  <?php echo $message; ?></p>
+<p>Filename: <?php echo $filepath; ?></p>
+<p>Line Number: <?php echo $line; ?></p>
+
+</div>

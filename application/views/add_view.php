@@ -5,8 +5,8 @@
 	<title><?php echo $page_title; ?></title>
     <link rel="stylesheet" href="<?php echo $base_url; ?><?php echo $css_url; ?>style.css">
     <link rel="stylesheet" href="<?php echo $base_url; ?><?php echo $css_url; ?>styles.css">
-    <link rel="stylesheet" href="http://cdn.illution.dk/CSS/chosen.css" />
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/smoothness/jquery-ui.css"/>
+    <link rel="stylesheet" href="<?php echo $css_url; ?>chosen.css" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/smoothness/jquery-ui.css"/>
     <link rel="stylesheet" href="<?php echo $base_url; ?><?php echo $css_url; ?>add.css">
 </head>
 <body>
@@ -42,13 +42,13 @@
         </form>
 	<div>
     
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-    <script src="http://js.pusherapp.com/1.9/pusher.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+    <script src="https://js.pusherapp.com/1.9/pusher.min.js"></script>
 	<script type="text/javascript" src="<?php echo $base_url; ?><?php echo $js_url; ?>script.js"></script>	
     <script src="<?php echo $base_url; ?><?php echo $js_url;?>standard.js"></script> 
     <script src="<?php echo $base_url; ?><?php echo $js_url;?>view.js"></script>  
-	<script src="http://cdn.illution.dk/JS/chosen.jquery.min.js"></script>        
+	<script src="<?php echo $base_url; ?><?php echo $js_url;?>chosen.jquery.min.js"></script>  
     
 </body>
 </html>
