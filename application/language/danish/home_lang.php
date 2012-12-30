@@ -1,0 +1,34 @@
+<?php
+$lang["home_seconds"] = "Sekunder";
+$lang["home_minutes"] = "Minutter";
+$lang["home_hours"] = "Timer";
+$lang["home_days"] = "Dage";
+$lang["home_weeks"] = "Uge";
+$lang["home_months"] = "Måneder";
+$lang["home_years"] = "År";
+$lang["home_search"] = "Søg";
+$lang["home_save"] = "Gem";
+$lang["home_name"] = "Navn";
+$lang["home_save_dialog_title"] = "Skriv dit navn";
+$lang["home_only_numbers"] = "Der må kun benyttes tal";
+$lang["home_select_time_range"] = "Vælg tids ramme";
+$lang["home_send"] = "Send";
+$lang["home_desired_creator_name"] = "Ønsket navn!";
+$lang["home_write_sentence"] = "Skriv venligst en sætning!";
+$lang["home_syllabels"] = "{number_of_syllabels} Vokaler";
+$lang["home_id_dialog_label"] = "Digtets id";
+$lang["home_time"] = "Tid";
+$lang["home_creator"] = "Forfatter";
+$lang["home_all_poems"] = "Alle digte";
+$lang["home_id"] = "Id";
+$lang["home_vowels_list"] = "a,e,i,o,u,y,æ,ø,å";
+$lang["home_description"] = "Beskrivelse";
+$lang["home_title"] = "Titel";
+$lang["home_chosen_no_result"] = "Der blev ikke fundet nogle resultater";
+$lang["home_tag"] = "Tag";
+$lang["home_date_time_format"] = "d/m-Y:m:i:s";
+$lang["home_add_tag"] = "Tilføj tag";
+$lang["home_unlimited"] = "Uendeligt";
+$lang["home_collections"] = "Samlinger";
+$lang["home_poems"] = "Digte";
+?> 

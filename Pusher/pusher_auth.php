@@ -19,9 +19,9 @@ if( $user->hasAccessTo($channel_name) == false ) {
 */
 
 $pusher = new Pusher(
-	'', //APP KEY
-	'', //APP SECRET
-	'' //APP ID
+	'9b245d36fea0d2611317', //APP KEY
+	'fa94913f60675f98df21', //APP SECRET
+	'9949' //APP ID
 );
 
 //Any data you want to send about the person who is subscribing

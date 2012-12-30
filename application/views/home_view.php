@@ -2,18 +2,39 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title><?php echo $page_title; ?></title>
-    <link rel="stylesheet" href="<?php echo $css_url; ?>style.css">
-    <link rel="stylesheet" href="<?php echo $css_url; ?>styles.css">
-    <link rel="stylesheet" href="http://cdn.illution.dk/CSS/chosen.css" />
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/smoothness/jquery-ui.css"/>
+	<title><?php echo $this->lang->line("info_app_title");?> - <?php echo $this->lang->line("pages_home");?></title>
+    <link rel="stylesheet" href="<?php echo $base_url.$css_url; ?>style.css">
+    <link rel="stylesheet" href="<?php echo $base_url.$css_url; ?>styles.css">
+    <link rel="stylesheet" href="<?php echo $base_url.$css_url; ?>chosen.css" />
+    <link rel="stylesheet" href="<?php echo $jquery_ui_css_url;?>jquery-ui.css"/>
+    <script type="text/javascript">
+        var translations = {
+            "alert" : "<?= $this->lang->line("errors_alert"); ?>",
+            "missing_fields" : "<?= $this->lang->line("errors_fields_missing"); ?>",
+            "no_sentences_match" : "<?= $this->lang->line("errors_no_sentences_matching"); ?>",
+            "an_error_occured" : "<?= $this->lang->line("errors_an_error_occured"); ?>",
+            "no_results_found" : "<?= $this->lang->line("home_chosen_no_result"); ?>",
+            "unlimited" : "<?= $this->lang->line("home_unlimited"); ?>"
+        }
+        var userLanguage = "<?php echo $this->ui_helper->language; ?>";
+        var translation_vowels = <?php echo json_encode($this->lang->array_line("home_vowels_list")); ?>;
+        var mode = "<?= $mode; ?>";
+        var base_url = "<?= $base_url; ?>";
+
+        <?php
+            if (isset($collection)) {
+                echo 'var collection = "'.$collection.'";';
+            }
+        ?>
+
+    </script>
     <!--[if lt IE 9]>
-          <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+          <script src="<?php echo $base_url.$html5_shiv_url; ?>"></script>
     <![endif]-->
     <style type="text/css">
 	@font-face {
 		font-family: "Bonzai";
-		src: url(http://illution.dk/Haiku/<?php echo $fonts_url;?>bonzai.ttf);
+		src: url(<?php echo $base_url; ?><?php echo $fonts_url;?>bonzai.ttf);
 	}
 	
 	.text{
@@ -25,7 +46,7 @@
 		<style type="text/css">
 		@font-face {
 			font-family: bonzai;
-			src:url(http://illution.dk/Haiku/<?php echo $fonts_url;?>bonzai.eot);
+			src:url(<?php echo $base_url; ?><?php echo $fonts_url;?>bonzai.eot);
 		}
 		
 		.text{
@@ -39,88 +60,127 @@
 	<input id="base_url" value="<?php echo $base_url; ?>" type="hidden">
     <input type="hidden" id="current_time" value="<?php echo $current_time ?>">
 
-	<form action="http://illution.dk/Haiku/output" method="post" id="submitForm">
-        <input type="hidden" id="sentence1Form" name="sentence1">
-        <input type="hidden" id="sentence2Form" name="sentence2">
-        <input type="hidden" id="sentence3Form" name="sentence3">
-        <input type="hidden" id="langForm" name="lang" value="<?php echo $langcode; ?>">
-        <input type="hidden" id="creatorForm" name="creator" value="Dumbo Klodshans Tommelfinger">
-    </form>
-    <div id="Container">
-        <ul id="questions">
-        	<li>
-            	<p id="title"></p>
-                <button id="submitButton" style="width:300px;margin-right:15px;display:none">Send</button>
-            </li>
-        </ul>
+    <div id="create" class="disabledPage">
+        <div id="Container">
+            <ul id="questions">
+            	<li>
+                	<p id="title"></p>
+
+                    <select data-placeholder="<?= $this->lang->line("home_tag"); ?>" id="tag-select" multiple>
+                        
+                    </select>
+                    
+                    <img src="<?php echo $base_url; ?>assets/images/add.png" title="<?php echo $this->lang->line("home_add_tag"); ?>" style="margin-bottom:15px;margin-right:-20px; cursor:pointer;" id="addTag"></img>
+
+                    <button id="submitButton" style="width:300px;margin-right:15px;display:none"><?php echo $this->lang->line("home_send"); ?></button>
+                </li>
+            </ul>
+        </div>
+        <div id="poemShowcaseContainer">
+        	<div id="poemShowcase">
+        	</div>
+        </div>
+
+        <div id="copyrightContainer">
+            <div id="copyright">
+                <a style="color:#70777a;" href="https://illution.dk"><?php echo $this->lang->line("info_copyright"); ?></a>
+            </div>
+        </div>
     </div>
-    <div id="poemShowcaseContainer">
-    	<div id="poemShowcase">
-    	</div>
+
+    <div id="view" class="disabledPage">
+        <div id="poemTemplate" style="display:none;">
+            <div class="box" style="width:480px;">
+                <p style="font-size:22px;" class="center-text"><strong>{title}</strong></p>
+                <div class="text" style="margin-left:40px;">
+                    {sentences}
+                </div>
+                <p><i> - {creator} : {date}</i></p>
+            </div>
+        </div>
     </div>
-    
+
+    <div id="saveDialog" title="<?php echo $this->lang->line("home_save_dialog_title"); ?>" style="display:none; overflow:hidden">
+        <table>
+            <tr><td><label for="saveDialogName" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;"><?php echo $this->lang->line("home_name"); ?></label></td>
+            <td><input type="text" id="saveDialogName"></tr></td>
+            <tr><td><label for="saveDialogTitle" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;"><?php echo $this->lang->line("home_title"); ?></label></td>
+            <td><input type="text" id="saveDialogTitle"></td></tr>
+        </table>
+        <button style="width:100%;margin-top:15px;" id="saveDialogSaveButton"><?php echo $this->lang->line("home_save"); ?></button>
+    </div>
+
+    <div id="addTagDialog" title="<?php echo $this->lang->line("home_add_tag"); ?>" style="display:none; overflow:hidden">
+        <table>
+            <tr><td><label for="tagInput" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;"><?php echo $this->lang->line("home_tag"); ?></label></td>
+            <td><input type="text" id="tagInput" style="width:127%;"></td></tr>
+        </table>
+        <button style="width:100%;margin-top:15px;" id="saveTagButton"><?php echo $this->lang->line("home_save"); ?></button>
+    </div>
+
     <div id="shareContainer">
-    	<div id="share">
-      	 	<button id="All"><?php echo $all; ?></button>
-            <button id="Creator"><?php echo $creator; ?></button>
-            <button id="Time"><?php echo $time; ?></button>
-            <button id="Id">Id</button>
+        <div id="share">
+            <button href="<?= $base_url; ?>/collection/create"><?php echo $this->lang->line("collection_create"); ?></button>
+            <button href="<?php echo $base_url.$collection; ?>/view"><?php echo $this->lang->line("home_poems"); ?></button>
+            <button href="<?php echo $base_url; ?>collections"><?php echo $this->lang->line("home_collections"); ?></button>
         </div>
     </div>
-    
-    <div id="copyrightContainer">
-        <div id="copyright">
-            <a style="color:#70777a;" href="http://illution.dk">Copyright &copy; Illution 2011</a>
-        </div>
+
+    <div id="nameDialog" title="<?php echo $this->lang->line("home_desired_creator_name"); ?>" style="display:none; overflow:hidden">
+        <label id="nameDialogLabel" for="Name" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;"><?php echo $this->lang->line("home_desired_creator_name"); ?></label>
+        <input type="text" id="Name">
+        <button id="nameDialogClose"><?php echo $this->lang->line("home_search"); ?></button>
     </div>
-    
-    <div id="dialog" title="<?php echo $text_data['WriteASentece']; ?>" style="display:none; overflow:hidden">
-    	<label id="dialogLabel" data-translated="<?php echo $text_data['Syllables']; ?>" for="dialogSentence" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;"><?php echo $text_data['FiveSyllables']; ?></label>
+
+    <div id="idDialog" title="<?php echo $this->lang->line("home_id_dialog_label"); ?>" style="display:none; overflow:hidden">
+        <label id="iddialogLabel" for="dialogId" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;"><?php echo $this->lang->line("home_id_dialog_label"); ?>:</label>
+        <input type="text" id="dialogId" style="width:260px">
+        <button id="idDialogClose" style="width:265px;"><?php echo $this->lang->line("home_search"); ?></button>
+    </div>
+
+    <div id="dialog" title="<?php echo $this->lang->line("home_write_sentence"); ?>" style="display:none; overflow:hidden">
+        <label id="dialogLabel" data-translated="<?php echo $this->lang->line("home_syllabels"); ?>" for="dialogSentence" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;"><?php echo $text_data['FiveSyllables']; ?></label>
         <input type="text" id="dialogSentence" style="width:240px;">
-        <img id="dialogValidationIcon" src="assets/images/validationError.png"/>
+        <img id="dialogValidationIcon" src="<?= $base_url; ?>assets/images/validationError.png"/>
         <input type="hidden" id="dialogSentenceNumber" style="width:100%;">
-        <button style="width:100%;margin-top:10px;" id="dialogSaveButton"><?php echo $text_data['Save']; ?></button>
+        <button style="width:100%;margin-top:10px;" id="dialogSaveButton"><?php echo $this->lang->line("home_save"); ?></button>
         <div id="syllables"></div>
     </div>
-    
-    <div id="saveDialog" title="<?php echo $text_data['Name']; ?>" style="display:none; overflow:hidden">
-    	<input type="text" id="saveDialogName" style="width:98%;margin-top:5px;">
-    	<button style="width:100%;margin-top:15px;" id="saveDialogSaveButton"><?php echo $text_data['Save']; ?></button>
-    </div>
-    
-    <div id="nameDialog" title="<?php echo $text_data['NameData']; ?>" style="display:none; overflow:hidden">
-    	<label id="nameDialogLabel" for="Name" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;"><?php echo $text_data['NameDataText']; ?></label>
-     	<input type="text" id="Name">
-        <button id="nameDialogClose"><?php echo $text_data['Search']; ?></button>
-     </div>
-     
-    <div id="idDialog" title="<?php echo $id_dialog; ?>" style="display:none; overflow:hidden">
-     	<label id="iddialogLabel" for="dialogId" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;"><?php echo $id_label; ?>:</label>
-        <input type="text" id="dialogId" style="width:260px">
-        <button id="idDialogClose" style="width:265px;"><?php echo $text_data['Search']; ?></button>
-    </div>
-    
-    <div id="timeDialog" title="<?php echo $text_data['TimeInterval']; ?>" style="display:none; overflow:hidden">
-   	  <label id="timeDialogLabel" for="Name" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;"><?php echo $text_data['TimeDataText']; ?>
+
+    <div id="timeDialog" title="<?php echo $this->lang->line("home_select_time_range"); ?>" style="display:none; overflow:hidden">
+   	  <label id="timeDialogLabel" for="Name" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;"><?php echo $this->lang->line("home_only_numbers"); ?>
       </label><br>
      	<input type="time" id="TimeInput">&nbsp;<select id="dialogSelect">
-			<option value="Seconds"><?php echo $text_data["Sec"]; ?></option>
-            <option value="Minutes" selected><?php echo $text_data["Minute"]; ?></option>
-            <option value="Hours" ><?php echo $text_data["Hours"]; ?></option>
-            <option value="Days" ><?php echo $text_data["Days"]; ?></option>
-            <option value="Week" ><?php echo $text_data["Week"]; ?></option>
-            <option value="Months" ><?php echo $text_data["Months"]; ?></option>
-            <option value="Years" ><?php echo $text_data["Years"]; ?></option>            
+			<option value="Seconds"><?php echo $this->lang->line("home_seconds"); ?></option>
+            <option value="Minutes" selected><?php echo $this->lang->line("home_minutes"); ?></option>
+            <option value="Hours" ><?php echo $this->lang->line("home_hours"); ?></option>
+            <option value="Days" ><?php echo $this->lang->line("home_days"); ?></option>
+            <option value="Week" ><?php echo $this->lang->line("home_weeks"); ?></option>
+            <option value="Months" ><?php echo $this->lang->line("home_months"); ?></option>
+            <option value="Years" ><?php echo $this->lang->line("home_years"); ?></option>            
         </select>
-        <button id="timeDialogClose"><?php echo $text_data['Search']; ?></button>
+        <button id="timeDialogClose"><?php echo $this->lang->line("home_search"); ?></button>
      </div>
+
+    <div class="ui-state-error ui-corner-all error" id="error" style="display:none;" style="padding: 0 .7em;">
+      <p>
+        <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+        <strong>{alert}:</strong>
+         {error}
+      </p>
+    </div>
    	
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-    <script src="<?php echo $js_url;?>pusher.min.js"></script>
-	<script src="<?php echo $js_url; ?>script.js"></script>	
-    <script src="<?php echo $js_url;?>standard.js"></script> 
-    <script src="<?php echo $js_url;?>view.js"></script>  
-	<script src="http://cdn.illution.dk/JS/chosen.jquery.min.js"></script>        
+	<script src="<?php echo $jquery_url; ?>"></script>
+    <script src="<?php echo $jquery_ui_js_url; ?>"></script>
+    <script src="<?php echo $base_url; ?><?php echo $js_url;?>chosen.jquery.min.js"></script>  
+    <script src="<?php echo $base_url.$js_url;?>pusher.min.js"></script>
+    <script type="text/javascript" src="<?= $base_url.$js_url."/error.js" ?>"></script>
+	<script src="<?php echo $base_url.$js_url; ?>script.js"></script>
+    <script type="text/javascript">
+        $("button").button();
+        $('button[href]').live("click",function () {
+            window.location = $(this).attr("href");
+        });
+    </script>
 </body>
 </html>

@@ -1,17 +1,4 @@
 /**
-* 
-* @param {} 
-* @return {} 
-*/
-/**
-* Downloads the newest poems for the poem showcase
-* @param {String} pName    A name to display with greeting.
-* @return {String}   Returns a string value containing name and greeting
-*/
-function example () {
-	
-}
-/**
 * Get the GET variables from the url.
 */
 function getUrlVars(){
@@ -26,25 +13,119 @@ function getUrlVars(){
 	return vars;
 }
 var currentSentenceNumber = 1;
-		var lang = getUrlVars()["lang"];
-		if(lang == undefined){
-			var lang = "";
-		}
+var lang = getUrlVars()["language"];
+if(lang == undefined){
+	var lang = userLanguage;
+}
 /**
 * Downloads the newest poems for the poem showcase
 */
 function downloadFeed () {
+	if (mode == "view") {
+		return;
+	}
 	$.ajax({
-	  url: 'http://illution.dk/Haiku/live/Language/'+lang,
+	  url: $("#base_url").val()+'live/?language='+lang,
 	  success: function (data) {
-		  $('#poemShowcase').html(data);
+	  	if (typeof data.poems == "undefined") {
+	  		return;
+	  	}
+	  	$('#poemShowcase').html("");
+	  	$.each(data.poems,function (index,element) {
+	  		if (element.sentences == null) {
+	  			return;
+	  		}
+	  		var poem = $('<a href="'+$("#base_url").val()+'poem/'+element.identifier+'"></a>');
+	  		if (typeof element.title != "undefined") {
+	  			poem.append('<p class="header">'+element.title+'</p>');
+	  		}
+	  		var sentences = $('<div class="sentences"></div>');
+	  		$.each(element.sentences, function (sentenceIndex, sentence) {
+	  			sentences.append('<span class="sentence">'+sentence.sentence+"</span><br>");
+	  		});
+			poem.append(sentences);
+	  		poem.append("<em> - "+element.creator+"</em>");
+	  		poem.append("<hr>");
+	  		$('#poemShowcase').append(poem);
+	  		if ($('#poemShowcase hr').length > 1) {
+	  			$('#poemShowcase hr:last').remove();
+	  		}
+	  	});
 	  }
 	});	
 }
 
 $(function(){
+
+	$("#addTag").live("click",function () {
+		$('#addTagDialog').dialog({
+			maxHeigth: 20,
+			minWidth: 300,
+			maxWidth: 300,
+			resizable: false,
+			modal: true
+		});
+	});
+
+	$("#saveTagButton").live("click", function () {
+		if ($("#tagInput").val() != "" && $("#tag-select").find("option:contains('"+$("#tagInput").val()+"')")) {
+			$("#tag-select").append('<option selected>'+$("#tagInput").val()+'</option>').trigger("liszt:updated");
+
+			$("#tag-select").trigger("liszt:updated");
+
+			$("#tagInput").val("");
+
+			$('#addTagDialog').dialog("close");
+		}
+	});
+
+	if (typeof mode != undefined && mode == "view") {
+		$.ajax({
+			url : $("#base_url").val() + "collection/"+collection,
+			success : function (data) {
+				if (typeof data.poems != "undefined") {
+					$.each(data.poems,function (index,poem) {
+						var html = $("#poemTemplate").html();
+						var sentences = "";
+						html = html.replace("{title}",poem.title);
+						html = html.replace("{creator}",poem.creator);
+
+						var date = new Date(poem.time_created*1000);
+
+						$.each(poem.sentences,function(sentenceId,sentence) {
+							sentences += sentence.sentence+"<br>";
+						});
+						html = html.replace("{sentences}","<div>"+sentences+"</div>");
+						html = html.replace("{date}","<u>"+date.toUTCString()+"</u>");
+						$("#view").append(html);
+					});
+				}
+				$("#view").removeClass("disabledPage");
+				$("body").css("display","");
+			}
+		});
+		return;
+	} else {
+		$("#create").removeClass("disabledPage");
+	}
 	
 	downloadFeed();
+
+	$.get(base_url+"tags").success(function (data) {
+		var data = $.parseJSON(data);
+		if ($(data.tags).length == 0) {
+			return;
+		}
+		$.each(data.tags,function (index,element) {
+			$("#tag-select").append("<option>"+element+"</option>");
+
+			if (index == $(data.tags).length) {
+				$("#tag-select").chosen({
+		            no_results_text: translations.no_results_found
+		        });
+			}
+		});
+	});
 	
 	var questions = $('#questions');
 	var box = $('#title');
@@ -55,7 +136,9 @@ $(function(){
 	function refreshSelects(){
 		var selects = questions.find('select');
 		// Improve the selects with the Chose plugin
-		selects.chosen();
+		selects.chosen({
+			no_results_text: translations.no_results_found
+		});
 		
 		// Listen for changes
 		selects.unbind('change').bind('change',function(){
@@ -82,58 +165,53 @@ $(function(){
 	* Fetches select data from server
 	* @param {No idea} I don't know
 	*/
-	function fetchSelect(val){
+	function fetchSelect(){
 		
 		if(working){
 			return false;
 		}
 		working = true;
-		$.getJSON('http://illution.dk/Haiku/ajax/Language/'+lang,{},function(jsonData){
-			// Loop throug sentence numbers
-			var boxTitle = jsonData.boxTitle;
+		$.getJSON($("#base_url").val()+'select/'+collection+'?language='+lang,{},function(jsonData){
+			if (typeof jsonData.error_message != "undefined") {
+				var boxTitle = jsonData.error_message;
+			} else {
+				var boxTitle = jsonData.boxTitle;
+			}
 			// Add the flags
-			boxTitle += '<img id="flagDK" src="assets/images/dk.png"/>\
-						 <img id="flagGB" src="assets/images/gb.png"/>';
+			boxTitle += '<img id="flagDK" src="'+$("#base_url").val()+'assets/images/dk.png"/>\
+						 <img id="flagGB" src="'+$("#base_url").val()+'assets/images/gb.png"/>';
 			// Set the title of the box
 			$('#title').html(boxTitle);
+
 			var selectTitle = jsonData.selectTitle;
-			$.each(jsonData,function(sentenceNumber,sentences) {
-				if(sentenceNumber == 5 || sentenceNumber == 7){
+			if (typeof jsonData.selects != "undefined") {
+				$.each(jsonData.selects,function(arrayIndex,sentenceNumber) {
 					// Create options array
 					var options = '';
 					// Add a blank option
 					options+= '<option value=""></option>';
 					// Set the default text
-					var defaultText = sentenceNumber + ' ' + selectTitle;
-					// Loop through sentences
-					$.each(sentences,function(index,sentence){
-						options+= '<option value="' + sentence + '">' + sentence + '</option>';
-					});
+					
+					if (sentenceNumber == "unlimited") {
+						var sentenceNumberText = translations.unlimited;
+					} else {
+						var sentenceNumberText = sentenceNumber;
+					}
+
+					var defaultText = selectTitle.replace("{number_of_syllabels}",sentenceNumberText);;
+					if (typeof jsonData.sentences[sentenceNumber] != "undefined") {
+						// Loop through sentencesj 
+						$.each(jsonData.sentences[sentenceNumber],function(index,sentence){
+							options+= '<option value="' + sentence + '">' + sentence + '</option>';
+						});
+					}
 					// Add the select box
-					$('<select data-placeholder="'+defaultText+'" id="sentence' + currentSentenceNumber + '">'+ options +'</select>').appendTo(box);
-					$('<img src="assets/images/add.png" style="margin-left:5px;" class="addIcon" id="addIcon' + currentSentenceNumber + '"></img>').appendTo(box);
+					$('<select data-placeholder="'+defaultText+'" data-syllabels="'+sentenceNumber+'" class="sentence-select">'+ options +'</select>').appendTo(box);
+					$('<img src="'+base_url+'assets/images/add.png" style="margin-left:5px;" class="addIcon" id="addIcon' + currentSentenceNumber + '"></img>').appendTo(box);
 					
 					currentSentenceNumber++;
-				}
-			});
-			$.each(jsonData,function(sentenceNumber,sentences) {
-				if(sentenceNumber == '5') {
-					// Create options array
-					var options = '';
-					// Add a blank option
-					options+= '<option value=""></option>';
-					// Set the default text
-					var defaultText = sentenceNumber + ' ' + selectTitle;
-					// Loop through sentences
-					$.each(sentences,function(index,sentence){
-						options+= '<option value="' + sentence + '">' + sentence + '</option>';
-					});
-					// Add the select box
-					$('<select data-placeholder="'+defaultText+'" id="sentence' + currentSentenceNumber + '">'+ options +'</select>').appendTo(box);
-					$('<img src="assets/images/add.png" style="margin-left:5px;" class="addIcon" id="addIcon' + currentSentenceNumber + '"></img>').appendTo(box);
-				}
-			});
-			
+				});
+			}
 			refreshSelects();
 			
 			working = false;
@@ -142,7 +220,7 @@ $(function(){
 		
 	}
 	// Initially load the product select
-	fetchSelect('productSelect');
+	fetchSelect();
 	
 	
 	/**
@@ -164,6 +242,7 @@ $(function(){
 	$('#saveDialogName').keypress(function(event) {
   		if ( event.which == 13 ) {
      		$('#saveDialogSaveButton').click();
+     		$('#saveDialog').dialog("close");
 		}
 	});
 	
@@ -171,22 +250,58 @@ $(function(){
 	* When saveDialogSaveButton is clicked, send the data to the server.
 	*/
 	$('#saveDialogSaveButton').click(function () {
-		$('#creatorForm').val($('#saveDialogName').val());
-		ajaxCall('http://illution.dk/Haiku/Pusher/send_message.php', { message : "update" });
-		sendSelectValues();
+		ajaxCall($("#base_url").val()+'Pusher/send_message.php', { message : "update" });
+		if (sendSelectValues($('#saveDialogName').val(),$('#saveDialogTitle').val()) === true) {
+			$("#saveDialog").dialog("close");
+		}
 	});
 	
 	/**
 	* Sends the data(poem) to the server
 	*/
-	function sendSelectValues () {
-		var sentence1 = $('#sentence1 option:selected').val();	
-		var sentence2 = $('#sentence2 option:selected').val();	
-		var sentence3 = $('#sentence3 option:selected').val();	
-		$("#sentence1Form").val(sentence1);
-		$("#sentence2Form").val(sentence2);
-		$("#sentence3Form").val(sentence3);
-		$('#submitForm').submit();
+	function sendSelectValues (name,title) {
+		if ($(".sentence-select option:selected").length != $(".sentence-select").length) {
+			showError(translations.missing_fields,translations.alert,1500);
+			return;
+		}
+		var object = {
+			"creator" : name,
+			"language" : userLanguage,
+			"sentences" : [],
+			"title" : title,
+			"tags" : []
+		};
+		$(".sentence-select").each(function(index,element) {
+			if ($(element).attr("data-syllabels") !== "undefined" && ($(element).attr("data-syllabels") == "unlimited" || countSyllabels($(element).val(),translation_vowels) == $(element).attr("data-syllabels"))) {
+				object.sentences.push({
+					"sentence" : $(element).val(),
+					"language" : userLanguage,
+					"syllabels" : ($(element).attr("data-syllabels") == "unlimited") ? "unlimited" : countSyllabels($(element).val(),translation_vowels)
+				});	
+			}
+		});
+
+		var tags = $("#tag-select").val();
+
+		for (var i = 0; i < tags.length; i++) {
+			object.tags.push({
+				"tag" : tags[i].toLowerCase()
+			});
+		};
+
+		if (object.sentences.length != $(".sentence-select").length) {
+			showError(translations.no_sentences_match,translations.alert,1000);
+			return;
+		}
+		$.ajax({
+			url : $("#base_url").val()+"poem/save/"+collection,
+			type : "POST",
+			data : JSON.stringify(object),
+			error : function () {
+				showError(translations.an_error_occured,translations.alert,1500);
+			}
+		});
+		return true;
 	}
 	
 	/**
@@ -210,8 +325,9 @@ $(function(){
 	* When dialogSaveButton is clicked, add the data to the selects and close the dialog box
 	*/
 	$('#dialogSaveButton').click(function () {
-		saveDialog();
-		$("#dialog").dialog("close");
+		if (saveDialog() == true) {
+			$("#dialog").dialog("close");
+		}	
 	});
 	
 	/**
@@ -222,34 +338,44 @@ $(function(){
      		$('#dialogSaveButton').click();
 		}
 	});
-	
+			
+	/**
+	 * This function counts the number of syllabels
+	 * @param  {string} word          The word to count in
+	 * @param  {Array} syllabelsList The list of accepted syllabels
+	 * @return {integer}
+	 */
+	function countSyllabels (word, syllabelsList) {
+		var syllables = 0;
+		word = word.toLowerCase();
+		$.each(syllabelsList, function(index, element) {
+			syllables += (word.split(element).length - 1);
+		});
+
+		return syllables;
+	}
+
 	/**
 	* When a key is pressed in dialogSentence, count the number of syllables
 	*/
 	$('#dialogSentence').keyup(function(event) {
 		var target = event.target;
         var value = target.value.toLowerCase();
-		var sentenceNumber  = $('#dialogSentenceNumber').val();
+		var index  = $('#dialogSentenceNumber').val();
 		var allowedSyllables;
-		if(sentenceNumber != 2) {
-			allowedSyllables = 5;	
+
+		//Needs to be rethought
+		if($(".sentence-select").eq(index-1).attr("data-syllabels") !== "undefined") {
+			allowedSyllables = $(".sentence-select").eq(index-1).attr("data-syllabels");	
 		} else {
-			allowedSyllables = 7;
+			allowedSyllables = 5;
 		}
-		var syllables = 0;
-		syllables += (value.split("a").length - 1);
-		syllables += (value.split("e").length - 1);
-		syllables += (value.split("i").length - 1);
-		syllables += (value.split("o").length - 1);
-		syllables += (value.split("u").length - 1);
-		syllables += (value.split("y").length - 1);
-		syllables += (value.split("æ").length - 1);
-		syllables += (value.split("ø").length - 1);
-		syllables += (value.split("å").length - 1);
-		if(allowedSyllables == syllables) {
-			$('#dialogValidationIcon').attr("src","assets/images/validationOk.png");
+
+		var syllables = countSyllabels(value,translation_vowels);
+		if(allowedSyllables == syllables || (allowedSyllables == "unlimited") && syllables > 0) {
+			$('#dialogValidationIcon').attr("src",base_url+"assets/images/validationOk.png");
 		} else {
-			$('#dialogValidationIcon').attr("src","assets/images/validationError.png");
+			$('#dialogValidationIcon').attr("src",base_url+"assets/images/validationError.png");
 		}
     });
 	
@@ -261,27 +387,39 @@ $(function(){
 		$('#dialogSentence').blur();
 		$('html, body').animate({scrollTop:0}, 'fast');
 		// ---
-		var sentenceNumber = $('#dialogSentenceNumber').val();
+		var index = $('#dialogSentenceNumber').val();
 		var sentence = $('#dialogSentence').val();
-		removeSelection(sentenceNumber);
-		$('<option selected value="' + sentence + '">' + sentence + '</option>').appendTo("#sentence" + sentenceNumber);
-		$("#sentence"+sentenceNumber).trigger("liszt:updated");
+		if ($(".sentence-select").eq(index-1).attr("data-syllabels") == countSyllabels(sentence,translation_vowels) || $(".sentence-select").eq(index-1).attr("data-syllabels") == "unlimited") {
+			removeSelection(index-1);
+			$('<option selected value="' + sentence + '">' + sentence + '</option>').appendTo($(".sentence-select").eq(index-1));
+			$('<option value="' + sentence + '">' + sentence + '</option>').appendTo($('[data-syllabels="'+$(".sentence-select").eq(index-1).attr("data-syllabels")+'"]:not(:eq('+$(".sentence-select").eq(index-1)+'))'));
+			$('[data-syllabels="'+$(".sentence-select").eq(index-1).attr("data-syllabels")+'"]').trigger("liszt:updated");
+			return true;
+		}
 	}
 	
 	/**
 	* Shows the "add your own sentence" dialog
-	* @param {Integer} sentenceNumber	The currently used select box (1-3)
+	* @param {Integer} index	The jQuery index of the selected box 
 	*/
-	function showAddDialog (sentenceNumber) {
+	function showAddDialog (index) {
 		var allowedSyllables;
-		if(sentenceNumber == 1 || sentenceNumber == 3) {
-			allowedSyllables = 5;	
+		//This section needs to be converted
+		if($(".sentence-select").eq(index-1).attr("data-syllabels") !== "undefined") {
+			allowedSyllables = $(".sentence-select").eq(index-1).attr("data-syllabels");	
 		} else {
-			allowedSyllables = 7;
+			allowedSyllables = 5;
 		}
-		$('#dialogLabel').html($('#dialogLabel').attr("data-translated").replace("{0}",allowedSyllables))
-		$('#dialogValidationIcon').attr("src","assets/images/validationError.png");
-		$('#dialogSentenceNumber').val(sentenceNumber);
+
+		if (allowedSyllables == "unlimited") {
+			var allowedSyllablesText = translations.unlimited;
+		} else {
+			var allowedSyllablesText = allowedSyllables;
+		}
+
+		$('#dialogLabel').html($('#dialogLabel').attr("data-translated").replace("{number_of_syllabels}",allowedSyllablesText))
+		$('#dialogValidationIcon').attr("src",base_url+"assets/images/validationError.png");
+		$('#dialogSentenceNumber').val(index);
 		$('#dialogSentence').val('');
 		$('#dialog').dialog({
 			maxHeigth: 20,
@@ -304,8 +442,8 @@ $(function(){
 	* Removes all selections in the desired selectbox
 	* @param {Integer} sentenceNumber	The currently used select box (1-3)
 	*/
-	function removeSelection (sentenceNumber) {
-		$("#sentence" + sentenceNumber + " option:selected").removeAttr('selected');
+	function removeSelection (eq) {
+		$(".sentence-select").eq(eq).removeAttr('selected');
 	}
 	
 	/**
@@ -315,29 +453,36 @@ $(function(){
 		$("button").button();
 		$('#submitButton').show();
 		styleBrowsers();
-		$('body').fadeIn('slow');
-		$('#addIcon1').click(function(e) {
-			showAddDialog(1);
+		$('body').fadeIn('slow');//sentence-select
+		$(".addIcon").live("click",function () {
+			showAddDialog(index($(this).prev("div").prev("select"), $(".sentence-select"))+1);
 		});
-		$('#addIcon2').click(function(e) {
-			showAddDialog(2);
-		});
-		$('#addIcon3').click(function(e) {
-			showAddDialog(3);
-		});
+
 		/**
 		* When the Danish flag is clicked, send the user to the Danish page
 		*/
 		$('#flagDK').click(function () {
-			document.location = 'http://illution.dk/Haiku/?lang=da-DK';
+			document.location = $("#base_url").val()+'?language=danish';
 		});
 		/**
 		* When the English(GB) flag is clicked, send the user to the English(GB) page
 		*/
 		$('#flagGB').click(function () {
-			document.location = 'http://illution.dk/Haiku/?lang=en-GB';
+			document.location = $("#base_url").val()+'?language=english';
 		});
 	};
+
+	function index (element, selector) {
+		for (var i = 0; i <= selector.length; i++) {
+			if (compare(selector.eq(i),element)) {
+				return i;
+			}
+		};
+	}
+
+	function compare (element, object) {
+		return ($(element).get(0) == $(object).get(0));
+	}
 	
 	// Variables
 	var pusher;
@@ -357,15 +502,13 @@ $(function(){
 	// Create pusher object
 	pusher = new Pusher('9b245d36fea0d2611317');
 	// Set the channel auth endpoint
-	Pusher.channel_auth_endpoint = 'http://illution.dk/Haiku/Pusher/pusher_auth.php';
+	Pusher.channel_auth_endpoint = $("#base_url").val()+'Pusher/pusher_auth.php';
 	// Subscribe to the chat channel
 	chat_channel = pusher.subscribe('haiku-update-channel');
 	// Listen for the connected event
 	pusher.connection.bind('connected', function() {
-		console.log('Connected');
 		// Listen for new messages
 		chat_channel.bind('haiku-update', function(data) {
-			console.log('Got data');
 			// Call function to handle the data
 			setTimeout("downloadFeed()",2000);
 		});

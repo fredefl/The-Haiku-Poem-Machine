@@ -1,0 +1,1751 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"se",
+				"selects"
+			],
+			[
+				"q",
+				"query"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"h",
+				"hyp"
+			],
+			[
+				"check",
+				"checkUsernamePassword"
+			],
+			[
+				"mysql_re",
+				"mysql_real_escape_string"
+			],
+			[
+				"co",
+				"connection"
+			],
+			[
+				"mysql_s",
+				"mysql_select_db"
+			],
+			[
+				"mysq",
+				"mysql_connect"
+			],
+			[
+				"us",
+				"username"
+			],
+			[
+				"user",
+				"users"
+			],
+			[
+				"pas",
+				"password"
+			],
+			[
+				"array_key",
+				"array_key_exists"
+			],
+			[
+				"l",
+				"label	Tag"
+			],
+			[
+				"op",
+				"option	Tag"
+			],
+			[
+				"ro",
+				"rowsPerPage"
+			],
+			[
+				"flo",
+				"floor"
+			],
+			[
+				"is_f",
+				"is_float"
+			],
+			[
+				"page",
+				"paginate-numbers"
+			],
+			[
+				"cur",
+				"currentPage"
+			],
+			[
+				"of",
+				"offsetLarge"
+			],
+			[
+				"off",
+				"offsetSmall"
+			],
+			[
+				"pa",
+				"pages"
+			],
+			[
+				"cre",
+				"currentPage"
+			],
+			[
+				"in",
+				"input	Tag"
+			],
+			[
+				"colle",
+				"collection"
+			],
+			[
+				"res",
+				"result"
+			],
+			[
+				"get",
+				"getData"
+			],
+			[
+				"marg",
+				"margin-bottom"
+			],
+			[
+				"col",
+				"collections"
+			],
+			[
+				"base",
+				"base_url"
+			],
+			[
+				"coll",
+				"collections"
+			],
+			[
+				"te",
+				"template"
+			],
+			[
+				"tem",
+				"template"
+			],
+			[
+				"u",
+				"undefined"
+			],
+			[
+				"min",
+				"min-width"
+			],
+			[
+				"err",
+				"errorContainer"
+			],
+			[
+				"ma",
+				"margin-right"
+			],
+			[
+				"mar",
+				"margin-left"
+			],
+			[
+				"out",
+				"output"
+			],
+			[
+				"font-",
+				"font-size"
+			],
+			[
+				"font",
+				"font-family"
+			],
+			[
+				"i",
+				"italic"
+			],
+			[
+				"font-s",
+				"font-style"
+			],
+			[
+				"fie",
+				"fields"
+			],
+			[
+				"proer",
+				"property"
+			],
+			[
+				"re",
+				"replace"
+			],
+			[
+				"sente",
+				"sentences"
+			],
+			[
+				"sen",
+				"sentence"
+			],
+			[
+				"data",
+				"data-syllabels"
+			],
+			[
+				"json",
+				"json_encode"
+			],
+			[
+				"Class",
+				"ClassProperty"
+			],
+			[
+				"funct",
+				"function_exists"
+			],
+			[
+				"prop",
+				"proprety"
+			],
+			[
+				"_Get",
+				"_Get_Duplicate_Function"
+			],
+			[
+				"link_data",
+				"link_data_to_save"
+			],
+			[
+				"count",
+				"countSyllabels"
+			],
+			[
+				"json_",
+				"json_decode"
+			],
+			[
+				"all",
+				"allowedSyllables"
+			],
+			[
+				"func_get",
+				"func_get_args"
+			],
+			[
+				"for",
+				"for	for (…) {…}"
+			],
+			[
+				"sle",
+				"selector"
+			],
+			[
+				"coun",
+				"countSyllabels"
+			],
+			[
+				"ret",
+				"return"
+			],
+			[
+				"exp",
+				"explode"
+			],
+			[
+				"cou",
+				"countSyllabels"
+			],
+			[
+				"syl",
+				"syllabelsList"
+			],
+			[
+				"crea",
+				"creator"
+			],
+			[
+				"senten",
+				"sentences"
+			],
+			[
+				"p",
+				"poem"
+			],
+			[
+				"jso",
+				"json_encode"
+			],
+			[
+				"order",
+				"order_by"
+			],
+			[
+				"li",
+				"limit"
+			],
+			[
+				"Poem",
+				"PoemTemplate"
+			],
+			[
+				"lan",
+				"language"
+			],
+			[
+				"lang",
+				"languageFiles"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
+				"con",
+				"container"
+			],
+			[
+				"val",
+				"value"
+			],
+			[
+				"useR_a",
+				"user_password"
+			],
+			[
+				"len",
+				"length"
+			],
+			[
+				"has",
+				"hashing_iterations"
+			],
+			[
+				"column",
+				"columnIndex"
+			],
+			[
+				"colu",
+				"columnIndex"
+			],
+			[
+				"user_",
+				"user_control"
+			],
+			[
+				"_",
+				"_SESSION"
+			],
+			[
+				"array_u",
+				"array_unique"
+			],
+			[
+				"langu",
+				"languageFiles"
+			],
+			[
+				"ba",
+				"batch_load_lang_files"
+			],
+			[
+				"new",
+				"newestVersion"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"whi",
+				"whitelist"
+			],
+			[
+				"type",
+				"typeahead"
+			],
+			[
+				"margi",
+				"margin-left"
+			],
+			[
+				"com",
+				"computers"
+			],
+			[
+				"le",
+				"length"
+			],
+			[
+				"dataTa",
+				"dataTables_length"
+			],
+			[
+				"units",
+				"unitsGenerator"
+			],
+			[
+				"c",
+				"container"
+			],
+			[
+				"row",
+				"row-fluid"
+			],
+			[
+				"set",
+				"settings"
+			],
+			[
+				"templ",
+				"template_constants"
+			],
+			[
+				"_Te",
+				"_Template_Mix"
+			],
+			[
+				"el",
+				"element"
+			],
+			[
+				"conte",
+				"contentHeight"
+			],
+			[
+				"text",
+				"textarea"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"to",
+				"tokens"
+			],
+			[
+				"var",
+				"variable"
+			],
+			[
+				"la",
+				"language"
+			],
+			[
+				"Cr",
+				"CreateToken"
+			],
+			[
+				"mil",
+				"milliseconds"
+			],
+			[
+				"ini",
+				"initializeCallback"
+			],
+			[
+				"don",
+				"doneCallback"
+			],
+			[
+				"do",
+				"doneCallback"
+			],
+			[
+				"app",
+				"application"
+			],
+			[
+				"ca",
+				"caller"
+			],
+			[
+				"cu",
+				"current"
+			],
+			[
+				"ge",
+				"generators"
+			],
+			[
+				"find",
+				"findByProperty"
+			],
+			[
+				"conf",
+				"confirmDialog"
+			],
+			[
+				"store",
+				"storedVariables"
+			],
+			[
+				"orga",
+				"organizations"
+			],
+			[
+				"show",
+				"showError"
+			],
+			[
+				"req",
+				"request_url"
+			],
+			[
+				"_G",
+				"_Google_Auth_Access_Token"
+			],
+			[
+				"acc",
+				"access_token"
+			],
+			[
+				"web",
+				"PDF_add_weblink"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "application/views/create_collection_view.php",
+			"settings":
+			{
+				"buffer_size": 4877,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "assets/js/collection.js",
+			"settings":
+			{
+				"buffer_size": 436,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/language/english/home_lang.php",
+			"settings":
+			{
+				"buffer_size": 1149,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/language/english/collection_lang.php",
+			"settings":
+			{
+				"buffer_size": 201,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/views/home_view.php",
+			"settings":
+			{
+				"buffer_size": 9401,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Instal",
+				"Package Control: Install Package"
+			],
+			[
+				"Git p",
+				"Git: Push"
+			],
+			[
+				"Gk",
+				"Git: Gitk"
+			],
+			[
+				"doc",
+				"DocBlockr: Reparse comment block"
+			],
+			[
+				"git",
+				"Git: Gui"
+			],
+			[
+				"Package",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"Packgage",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 528.0
+	},
+	"console":
+	{
+		"height": 132.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/R/The-Haiku-Poem-Machine/assets/js/script.js",
+		"/R/The-Haiku-Poem-Machine/application/config/settings.php",
+		"/R/The-Haiku-Poem-Machine/assets/css/styles.css",
+		"/R/The-Haiku-Poem-Machine/application/views/home_view.php",
+		"/R/The-Haiku-Poem-Machine/assets/css/style.css",
+		"/R/The-Haiku-Poem-Machine/application/controllers/ui.php",
+		"/R/The-Haiku-Poem-Machine/application/libraries/ui_helper.php",
+		"/R/The-Haiku-Poem-Machine/application/config/routes.php",
+		"/R/The-Haiku-Poem-Machine/application/controllers/api.php",
+		"/R/The-Haiku-Poem-Machine/application/libraries/collection.php",
+		"/R/The-Haiku-Poem-Machine/application/language/english/pages_lang.php",
+		"/R/The-Haiku-Poem-Machine/application/libraries/poem.php",
+		"/R/The-Haiku-Poem-Machine/application/language/english/home_lang.php",
+		"/R/The-Haiku-Poem-Machine/application/language/english/navigate_lang.php",
+		"/C/xampp/htdocs/haiku/application/libraries/std_library.php",
+		"/R/ComputerInfo/application/libraries/std_library.php",
+		"/R/The-Haiku-Poem-Machine/application/models/tags.php",
+		"/R/The-Haiku-Poem-Machine/application/language/english/errors_lang.php",
+		"/R/The-Haiku-Poem-Machine/application/models/collections.php",
+		"/R/The-Haiku-Poem-Machine/application/libraries/std_library.php",
+		"/R/The-Haiku-Poem-Machine/application/views/poem_search_view.php",
+		"/C/xampp/htdocs/random.php",
+		"/C/xampp/random.php",
+		"/R/The-Haiku-Poem-Machine/assets/js/collections.js",
+		"/R/The-Haiku-Poem-Machine/assets/js/error.js",
+		"/R/The-Haiku-Poem-Machine/application/views/collections_view.php",
+		"/C/xampp/htdocs/learn.php",
+		"/C/xampp/htdocs/admin.php",
+		"/C/Users/Bo/Desktop/test.html",
+		"/C/Users/Bo/Desktop/test.php",
+		"/R/The-Haiku-Poem-Machine/application/views/get_colelctions_view.php",
+		"/R/The-Haiku-Poem-Machine/application/views/poem_view.php",
+		"/R/IllutionBootstrap/bootstrap/less/core/responsive.less",
+		"/R/IllutionBootstrap/bootstrap/less/core/bootstrap.less",
+		"/R/IllutionBootstrap/bootstrap/grunt.js",
+		"/R/IllutionBootstrap/bootstrap/less/extra/extra.less",
+		"/R/The-Haiku-Poem-Machine/application/language/english/info_lang.php",
+		"/R/The-Haiku-Poem-Machine/application/models/poems.php",
+		"/R/The-Haiku-Poem-Machine/Pusher/send_message.php",
+		"/R/The-Haiku-Poem-Machine/application/controllers/home.php",
+		"/R/The-Haiku-Poem-Machine/application/controllers/selectold.php",
+		"/R/The-Haiku-Poem-Machine/application/controllers/live.php",
+		"/R/The-Haiku-Poem-Machine/application/models/sentences.php",
+		"/R/The-Haiku-Poem-Machine/application/controllers/collection.php",
+		"/R/The-Haiku-Poem-Machine/assets/js/standard.js",
+		"/R/The-Haiku-Poem-Machine/assets/js/view.js",
+		"/R/The-Haiku-Poem-Machine/application/controllers/select.php",
+		"/R/The-Haiku-Poem-Machine/system/core/Router.php",
+		"/R/The-Haiku-Poem-Machine/application/libraries/sentence.php",
+		"/R/The-Haiku-Poem-Machine/application/models/std_model.php",
+		"/R/The-Haiku-Poem-Machine/application/libraries/tag.php",
+		"/R/The-Haiku-Poem-Machine/system/database/drivers/postgre/postgre_forge.php",
+		"/R/The-Haiku-Poem-Machine/index.php",
+		"/C/xampp/htdocs/test_2.php",
+		"/R/The-Haiku-Poem-Machine/application/language/english/ajax_lang.php",
+		"/R/The-Haiku-Poem-Machine/application/controllers/ajax.php",
+		"/R/The-Haiku-Poem-Machine/application/core/MY_Lang.php",
+		"/R/The-Haiku-Poem-Machine/application/config/autoload.php",
+		"/R/The-Haiku-Poem-Machine/application/config/config.php",
+		"/R/UFO-Slides/index.html",
+		"/R/The-Haiku-Poem-Machine/application/errors/error_php.php",
+		"/R/The-Haiku-Poem-Machine/application/libraries/sentenceclass.php",
+		"/R/The-Haiku-Poem-Machine/application/libraries/objects/poem.php",
+		"/R/The-Haiku-Poem-Machine/assets/css/standard.css",
+		"/R/The-Haiku-Poem-Machine/application/controllers/add.php",
+		"/R/ComputerInfo/application/config/autoload.php",
+		"/R/The-Haiku-Poem-Machine/application/config/database.php",
+		"/R/The-Haiku-Poem-Machine/sftp-config.json",
+		"/R/Illution Site/Haiku/application/controllers/live.php",
+		"/R/Illution Site/Haiku/application/config/routes.php",
+		"/R/Illution Site/Haiku/assets/js/script.js",
+		"/R/Illution Site/Haiku/assets/css/styles.css",
+		"/R/Illution Site/Haiku/application/views/output_view.php",
+		"/R/Illution Site/Haiku/application/views/all_view.php",
+		"/R/Illution Site/Haiku/sftp-config.json",
+		"/R/Illution Site/Haiku/application/views/add_view.php",
+		"/R/Illution Site/Haiku/application/views/home_view.php",
+		"/R/Illution Site/Haiku/.htaccess",
+		"/R/Illution Site/Haiku/index.php",
+		"/R/Illution Site/Haiku/assets/js/pusher.min.js",
+		"/R/Illution Site/Haiku/assets/css/view.css",
+		"/R/Illution Site/Haiku/assets/css/output.css",
+		"/R/Illution Site/Haiku/assets/css/chosen.css",
+		"/R/UFO-Slides/css/utilities.css",
+		"/R/Illution Site/Haiku/application/config/database.php",
+		"/R/Illution Site/Haiku/application/models/addfield.php",
+		"/R/Illution Site/Haiku/application/config/config.php",
+		"/R/Illution Site/Haiku/application/errors/error_404.php",
+		"/R/Illution Site/Haiku/application/errors/error_db.php",
+		"/R/Illution Site/Haiku/application/errors/error_general.php",
+		"/R/Illution Site/Haiku/application/errors/error_php.php",
+		"/R/ClickThis/ClickThis/application/config/routes.php",
+		"/R/ComputerInfo/assets/css/style.css",
+		"/R/ComputerInfo/assets/js/tableGenerator.js",
+		"/R/ComputerInfo/assets/js/objx.js",
+		"/R/ComputerInfo/assets/js/settings.js",
+		"/R/ComputerInfo/application/language/english/modals_lang.php",
+		"/R/ComputerInfo/assets/js/application.js",
+		"/R/ComputerInfo/application/views/models_view.php",
+		"/R/ComputerInfo/application/views/front_view.php",
+		"/R/ComputerInfo/application/config/routes.php",
+		"/R/ComputerInfo/application/controllers/login.php",
+		"/R/ComputerInfo/application/controllers/api.php",
+		"/R/ComputerInfo/application/libraries/token.php",
+		"/R/ComputerInfo/application/controllers/user_management.php",
+		"/R/ComputerInfo/application/libraries/screen.php",
+		"/R/IllutionBootstrap/bootstrap/less/core/variables.less",
+		"/R/IllutionBootstrap/bootstrap/less/extra/datepicker.less",
+		"/R/ComputerInfo/application/controllers/ui.php",
+		"/R/IllutionBootstrap/bootstrap/less/core/buttons.less",
+		"/R/IllutionBootstrap/bootstrap/js/extra/bootstrap-datepicker.js",
+		"/R/ComputerInfo/application/models/std_model.php",
+		"/R/ComputerInfo/application/config/settings.php",
+		"/R/ComputerInfo/application/libraries/user.php",
+		"/R/ComputerInfo/application/libraries/auth/login_security.php",
+		"/R/ComputerInfo/application/models/settings.php",
+		"/R/ComputerInfo/application/libraries/computer.php",
+		"/R/ComputerInfo/application/language/english/user_settings_lang.php",
+		"/R/ComputerInfo/application/views/home_view.php",
+		"/R/ComputerInfo/application/libraries/user_control.php",
+		"/R/ComputerInfo/assets/js/script.js",
+		"/R/ComputerInfo/assets/bootstrap/less/core/variables.less",
+		"/R/ComputerInfo/sftp-config.json",
+		"/R/ComputerInfo/application/libraries/location.php",
+		"/R/ComputerInfo/application/libraries/device.php",
+		"/R/ComputerInfo/application/libraries/printer.php",
+		"/R/ComputerInfo/application/models/login_model.php",
+		"/C/Users/Bo/Desktop/twitter-bootstrap-v2.2.0-0-gb5af762/twitter-bootstrap-b5af762/less/bootstrap.less"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"R:\\The-Haiku-Poem-Machine",
+			"R:\\Illution Site\\Haiku",
+			"R:\\IllutionBootstrap",
+			"R:\\Font-Awesome-More\\less",
+			"R:\\ComputerInfo\\application",
+			"C:\\Users\\Bo\\Desktop\\Hind\\xpak_hind",
+			"R:\\IllutionBootstrap\\bootstrap\\less",
+			"R:\\IllutionBootstrap\\bootstrap\\less,R:\\ComputerInfo\\application",
+			"R:\\IllutionBootstrap\\bootstrap\\less"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"$(\"#tag-select\")",
+			"saveDialogTitle",
+			"align=\"left\"",
+			"5",
+			"floor",
+			"validationError.png",
+			"validationError.png\"",
+			"validationError.png",
+			"sentences",
+			"poem_id",
+			".chosen",
+			"language",
+			"_Array_Data_Exists",
+			"echo",
+			"print_r",
+			"_Save_Linked_Object",
+			"print_r",
+			"(var)",
+			"is_null",
+			"Sending",
+			"dialogSentenceNumber",
+			"console.log",
+			"sentenceNumber",
+			"translations_syllabels",
+			",\"",
+			"\",",
+			"sentence-select",
+			"#title",
+			"home_desired_creator_name",
+			"$_COOKIE",
+			"Sentence",
+			"h3",
+			"Sentence",
+			"/Haiku/assets/images/",
+			"https://illution.dk/Haiku/",
+			"https://cdn.illution.dk/CSS/chosen.css",
+			"chosen-sprite.png",
+			"circle",
+			"</a>",
+			"<a >",
+			"div",
+			"#4191fb",
+			"span",
+			"</div>",
+			"<div>",
+			" style=\"\"",
+			"div",
+			"• ",
+			"<div>\n							<br>\n						</div>",
+			"div",
+			"iv",
+			"div",
+			" style=\"font: inherit;\"",
+			"div",
+			" style=\"font: inherit;\">",
+			"div",
+			" style=\"font: inherit;\"",
+			"div",
+			"1",
+			"name",
+			"modals_name_label",
+			"btnBackground",
+			"@primaryButtonBackground",
+			".buttonBackground",
+			"Searching",
+			".buttonBackground",
+			"*/",
+			"/*",
+			".modal(",
+			"d",
+			"btn-primary",
+			"user-password",
+			"$User->",
+			"email",
+			"\"user_id\"",
+			"user-",
+			"-",
+			"email",
+			"$User",
+			" $User",
+			"language",
+			"_Device_Update",
+			"Model",
+			"login_security->check",
+			"->check",
+			"FindBy",
+			"data-index",
+			"index",
+			"userLanguage",
+			"$this->config->item",
+			"$_SESSION[\"user_id\"])",
+			"$_SESSION[\"user_id\"]",
+			"user_id",
+			"PHPSESSID",
+			"Login_Model",
+			"59",
+			"console",
+			"highlighter",
+			"root + \"translate/datatable\"",
+			"<?php",
+			"?>",
+			"<?php",
+			"root + \"assets/translations/datatables/\"+application.language+\".txt\"",
+			"\"Showing _START_ to _END_ of _TOTAL_ entries\"",
+			"generateFie",
+			"generateFieldsDropdown",
+			"this.translations[\"no_ressource_found\"]",
+			"showError",
+			"tableRowClicked",
+			"length_select",
+			"change.DT",
+			"_fnFeatureHtmlLength",
+			"iDisplayLength",
+			"option",
+			"select",
+			"dataTables_length",
+			"self::_Template_Mix",
+			"self::_Template_Mix($template,$template_variables)",
+			"_Template_Mix",
+			"register_mail_subject",
+			"not_a_valid_email",
+			"\"Reset password\"",
+			"template_variables",
+			"Password",
+			"ui_title_brand",
+			"Email",
+			"ui_register_incorrect_captcha",
+			"Warning!"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			",",
+			"<?php echo $css_url; ?>chosen.css",
+			"../images/chosen-sprite.png",
+			"$this->_CI->config->item",
+			"$_SESSION[$this->config->item(\"user_id_session\")]",
+			"datatables_translations",
+			"\"<?php",
+			"?>\"",
+			"\"<?php",
+			"root + \"translate/datatable\"",
+			"root + \"assets/translations/datatables/\"+application.language+\".txt\"\nroot + \"translate/datatable\"",
+			"ObjectTemplate.modifiedByUser \"dkleader\"",
+			"new Reset_Password_Token",
+			"js/core/",
+			"core/js/",
+			"core/js",
+			"\",",
+			"\"",
+			"\"\\n\"js/",
+			"\"\"js/",
+			"\\n js/",
+			"application.readyCallback",
+			"application.settings",
+			"application",
+			"\"bootstrap/js/bootstrap",
+			"\",\\n\"",
+			"_Exists",
+			"_Convert_Properties_To_Database_Row",
+			"if (property_exists($this,\"_INTERNAL_CURRENT_USER\") && isset($this->_INTERNAL_CURRENT_USER) && !is_null($this->_INTERNAL_CURRENT_USER) && method_exists($Class,\"Set_Current_User\")) {",
+			"if (property_exists($this,\"_INTERNAL_CURRENT_USER\") && isset($this->_INTERNAL_CURRENT_USER) && !is_null($this->_INTERNAL_CURRENT_USER) && method_exists($Object,\"Set_Current_User\")) {",
+			"if (!is_null($this->_INTERNAL_CURRENT_USER) && method_exists($Class,\"Set_Current_User\")) {",
+			"if (!is_null($this->_INTERNAL_CURRENT_USER) && method_exists($Object,\"Set_Current_User\")) {",
+			"this",
+			"../images/",
+			"../images/chosen-sprite.png",
+			"../images/chosen-sprite.png\n\n```	",
+			"\n\n```	",
+			"\n\\n\n```	",
+			"\n\\n    \n```	",
+			"\n   \n```	",
+			"\n\\n    \n```	",
+			"\n\n```	",
+			"\n\n\\n		",
+			"/n	",
+			"\\n	",
+			"",
+			"App_Exists(",
+			"",
+			"_Convert_From_Object(",
+			"_Contains_Object(",
+			"_Secure_Export()",
+			"_Normal_Export(",
+			"_Load_From_Class(",
+			"_Link_Properties()",
+			"_Save_Linked_Properties()",
+			"_Force_Array()",
+			"',1,1)",
+			",1,1)",
+			",",
+			"$Data",
+			"$Class",
+			"_INTERNAL_DATABASE_NAME_CONVERT",
+			"$this->CI->Model_User->",
+			"model(\"Model_User\")",
+			"_CI",
+			"$Class",
+			"_CI",
+			"$_CI",
+			"_SetDataClass",
+			"$Group",
+			"_ClearDatabase",
+			"_SetDataArray",
+			"_RemoveUserData",
+			"_CheckData",
+			"_RemoveDatabaseData",
+			"_SetDataClass",
+			",$this->",
+			"$this->",
+			"$User->",
+			"self::CheckData(&2,&1);",
+			"",
+			");",
+			",",
+			"		self::CheckData(",
+			"\\nself::CheckData(",
+			"\\n		self::CheckData(",
+			"\\nself::CheckData(",
+			"self::CheckData(",
+			"0.69",
+			"provider.addBullets(",
+			"searchProviders",
+			"{size}",
+			"jqt/img/chevron.png",
+			"96"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "application/views/create_collection_view.php",
+					"settings":
+					{
+						"buffer_size": 4877,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3526,
+								3526
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 630.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "assets/js/collection.js",
+					"settings":
+					{
+						"buffer_size": 436,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								369,
+								369
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "application/language/english/home_lang.php",
+					"settings":
+					{
+						"buffer_size": 1149,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								774,
+								786
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "application/language/english/collection_lang.php",
+					"settings":
+					{
+						"buffer_size": 201,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								196,
+								196
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "application/views/home_view.php",
+					"settings":
+					{
+						"buffer_size": 9401,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1963,
+								1963
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 462.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 32.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.aaa_package_dev":
+	{
+		"height": 100.0
+	},
+	"output.git":
+	{
+		"height": 100.0
+	},
+	"output.phpdocumentor":
+	{
+		"height": 100.0
+	},
+	"output.sftp":
+	{
+		"height": 106.0
+	},
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"scr",
+				"assets/js/script.js"
+			],
+			[
+				"set",
+				"application/config/settings.php"
+			],
+			[
+				"home_v",
+				"application/views/home_view.php"
+			],
+			[
+				"sty",
+				"assets/css/styles.css"
+			],
+			[
+				"ui_h",
+				"application/libraries/ui_helper.php"
+			],
+			[
+				"home_l",
+				"application/language/english/home_lang.php"
+			],
+			[
+				"home_",
+				"application/views/home_view.php"
+			],
+			[
+				"api",
+				"application/controllers/api.php"
+			],
+			[
+				"coll",
+				"application/libraries/collection.php"
+			],
+			[
+				"rote",
+				"application/config/routes.php"
+			],
+			[
+				"page",
+				"application/language/english/pages_lang.php"
+			],
+			[
+				"ho",
+				"application/views/home_view.php"
+			],
+			[
+				"u",
+				"application/controllers/ui.php"
+			],
+			[
+				"rou",
+				"application/config/routes.php"
+			],
+			[
+				"poe",
+				"application/libraries/poem.php"
+			],
+			[
+				"route",
+				"application/config/routes.php"
+			],
+			[
+				"err_l",
+				"application/language/english/errors_lang.php"
+			],
+			[
+				"col",
+				"application/models/collections.php"
+			],
+			[
+				"std",
+				"application/libraries/std_library.php"
+			],
+			[
+				"collec",
+				"application/models/collections.php"
+			],
+			[
+				"ap",
+				"application/controllers/api.php"
+			],
+			[
+				"st",
+				"assets/css/styles.css"
+			],
+			[
+				"error.j",
+				"assets/js/error.js"
+			],
+			[
+				"scipt",
+				"assets/js/script.js"
+			],
+			[
+				"err",
+				"application/language/english/errors_lang.php"
+			],
+			[
+				"get",
+				"application/views/get_colelctions_view.php"
+			],
+			[
+				"home",
+				"application/language/english/home_lang.php"
+			],
+			[
+				"styles",
+				"assets/css/styles.css"
+			],
+			[
+				"styl",
+				"assets/css/style.css"
+			],
+			[
+				"sy",
+				"assets/css/style.css"
+			],
+			[
+				"_lang",
+				"application/language/english/info_lang.php"
+			],
+			[
+				"std_",
+				"application/libraries/std_library.php"
+			],
+			[
+				"poem.",
+				"application/libraries/poem.php"
+			],
+			[
+				"po",
+				"application/models/poems.php"
+			],
+			[
+				"ui",
+				"application/controllers/ui.php"
+			],
+			[
+				"sc",
+				"assets/js/script.js"
+			],
+			[
+				"send",
+				"Pusher/send_message.php"
+			],
+			[
+				"scri",
+				"assets/js/script.js"
+			],
+			[
+				"sett",
+				"application/config/settings.php"
+			],
+			[
+				"home_la",
+				"application/language/english/home_lang.php"
+			],
+			[
+				"stan",
+				"assets/js/standard.js"
+			],
+			[
+				"view.",
+				"assets/js/view.js"
+			],
+			[
+				"sele",
+				"application/controllers/select.php"
+			],
+			[
+				"scro",
+				"system/core/Router.php"
+			],
+			[
+				"sente",
+				"application/libraries/sentence.php"
+			],
+			[
+				"tag",
+				"application/libraries/tag.php"
+			],
+			[
+				"std_mo",
+				"application/models/std_model.php"
+			],
+			[
+				"std_l",
+				"application/libraries/std_library.php"
+			],
+			[
+				"peo",
+				"system/database/drivers/postgre/postgre_forge.php"
+			],
+			[
+				"poem",
+				"application/libraries/poem.php"
+			],
+			[
+				"pe",
+				"application/libraries/poem.php"
+			],
+			[
+				"er",
+				"application/language/english/errors_lang.php"
+			],
+			[
+				"aja",
+				"application/language/english/ajax_lang.php"
+			],
+			[
+				"my_",
+				"application/core/MY_Lang.php"
+			],
+			[
+				"ui_",
+				"application/libraries/ui_helper.php"
+			],
+			[
+				"error_la",
+				"application/language/english/errors_lang.php"
+			],
+			[
+				"aja_l",
+				"application/language/english/ajax_lang.php"
+			],
+			[
+				"ajax_l",
+				"application/language/english/ajax_lang.php"
+			],
+			[
+				"hom_l",
+				"application/language/english/home_lang.php"
+			],
+			[
+				"h",
+				"application/controllers/home.php"
+			],
+			[
+				"aut",
+				"application/config/autoload.php"
+			],
+			[
+				"co",
+				"application/config/config.php"
+			],
+			[
+				"au",
+				"application/config/autoload.php"
+			],
+			[
+				"hom.",
+				"application/controllers/home.php"
+			],
+			[
+				"live",
+				"application/controllers/live.php"
+			],
+			[
+				"standard",
+				"assets/js/standard.js"
+			],
+			[
+				"view.js",
+				"assets/js/view.js"
+			],
+			[
+				"conf",
+				"application/config/config.php"
+			],
+			[
+				"lan/h",
+				"application/language/english/home_lang.php"
+			],
+			[
+				"sf",
+				"sftp-config.json"
+			],
+			[
+				"appl",
+				"assets/js/application.js"
+			],
+			[
+				"obj",
+				"assets/js/objx.js"
+			],
+			[
+				"objx",
+				"assets/js/objx.js"
+			],
+			[
+				"log",
+				"application/controllers/login.php"
+			],
+			[
+				"toke",
+				"application/libraries/token.php"
+			],
+			[
+				"lo",
+				"application/controllers/login.php"
+			],
+			[
+				"user_a",
+				"application/controllers/user_management.php"
+			],
+			[
+				"scre",
+				"application/libraries/screen.php"
+			],
+			[
+				"modal",
+				"application/language/english/modals_lang.php"
+			],
+			[
+				"apli",
+				"assets/js/application.js"
+			],
+			[
+				"mode",
+				"application/views/models_view.php"
+			],
+			[
+				"fro",
+				"application/views/front_view.php"
+			],
+			[
+				"table",
+				"assets/js/tableGenerator.js"
+			],
+			[
+				"sett.js",
+				"assets/js/settings.js"
+			],
+			[
+				"tab",
+				"assets/js/tableGenerator.js"
+			],
+			[
+				"model",
+				"application/views/models_view.php"
+			],
+			[
+				"std_m",
+				"application/models/std_model.php"
+			],
+			[
+				"co/s",
+				"application/config/settings.php"
+			],
+			[
+				"comput.ph",
+				"application/libraries/computer.php"
+			],
+			[
+				"user",
+				"application/libraries/user.php"
+			],
+			[
+				"user_s",
+				"application/language/english/user_settings_lang.php"
+			],
+			[
+				"cof/set",
+				"application/config/settings.php"
+			],
+			[
+				"user_c",
+				"application/libraries/user_control.php"
+			],
+			[
+				"log_se",
+				"application/libraries/auth/login_security.php"
+			],
+			[
+				"co/set",
+				"application/config/settings.php"
+			],
+			[
+				"login_se",
+				"application/libraries/auth/login_security.php"
+			],
+			[
+				"sft",
+				"sftp-config.json"
+			],
+			[
+				"moda",
+				"application/language/english/modals_lang.php"
+			],
+			[
+				"loca",
+				"application/libraries/location.php"
+			],
+			[
+				"printer",
+				"application/libraries/printer.php"
+			],
+			[
+				"device.p",
+				"application/libraries/device.php"
+			],
+			[
+				"comp.php",
+				"application/libraries/computer.php"
+			],
+			[
+				"login",
+				"application/controllers/login.php"
+			],
+			[
+				"login_m",
+				"application/models/login_model.php"
+			],
+			[
+				"tabl",
+				"assets/js/tableGenerator.js"
+			],
+			[
+				"config.ph",
+				"application/config/config.php"
+			],
+			[
+				"user_ma",
+				"application/controllers/user_management.php"
+			],
+			[
+				"com",
+				"application/libraries/computerinfo_security.php"
+			],
+			[
+				"com_",
+				"application/libraries/computerinfo_security.php"
+			],
+			[
+				"wind",
+				"application/controllers/windows_login.php"
+			],
+			[
+				"config/set",
+				"application/config/settings.php"
+			],
+			[
+				"user_",
+				"application/libraries/user_control.php"
+			],
+			[
+				"auto",
+				"application/config/autoload.php"
+			],
+			[
+				"my",
+				"application/core/MY_Lang.php"
+			],
+			[
+				"computerin",
+				"application/libraries/computerinfo_security.php"
+			],
+			[
+				"lang/me",
+				"application/language/english/messages_lang.php"
+			],
+			[
+				"logmo",
+				"application/models/login_model.php"
+			],
+			[
+				"librari/user",
+				"application/libraries/user.php"
+			],
+			[
+				"logi",
+				"application/models/login_model.php"
+			],
+			[
+				"viset",
+				"application/views/settings.php"
+			],
+			[
+				"ro",
+				"application/config/routes.php"
+			],
+			[
+				"useri",
+				"assets/js/userInfo.js"
+			],
+			[
+				"user_man",
+				"application/controllers/user_management.php"
+			],
+			[
+				"bo",
+				"assets/bootstrap/js/bootstrap.js"
+			],
+			[
+				"scri.",
+				"assets/js/script.js"
+			],
+			[
+				"regi",
+				"application/views/user_register_view.php"
+			],
+			[
+				"user_se",
+				"application/language/english/user_settings_lang.php"
+			],
+			[
+				"langsetting",
+				"application/config/settings.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 246.0,
+	"status_bar_visible": true
+}

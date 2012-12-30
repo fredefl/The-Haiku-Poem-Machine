@@ -47,9 +47,13 @@
 $active_group = 'default';
 $active_record = TRUE;
 
+/*$db['default']['hostname'] = '127.0.0.1';
+$db['default']['username'] = 'haikudba';
+$db['default']['password'] = "ZUilbatvT43zHwYFSqm2";
+$db['default']['database'] = 'haiku';*/
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'haikuadmin';
-$db['default']['password'] = 'password';
+$db['default']['username'] = 'root';
+$db['default']['password'] = "";
 $db['default']['database'] = 'haiku';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';

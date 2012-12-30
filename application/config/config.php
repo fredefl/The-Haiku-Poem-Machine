@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://illution.dk/Haiku/';
+$config['base_url']	= 'http://127.0.0.1/haiku';
 
 /*
 |--------------------------------------------------------------------------
@@ -27,78 +27,6 @@ $config['base_url']	= 'http://illution.dk/Haiku/';
 |
 */
 $config['index_page'] = '';
-
-/*
-|--------------------------------------------------------------------------
-| Assets Location
-|--------------------------------------------------------------------------
-|
-| This will be your assets url.
-| etc http://cdn.illution.dk
-|
-*/
-
-$config['assets_url'] = 'assets/';
-
-/*
-|--------------------------------------------------------------------------
-| Supported Languages
-|--------------------------------------------------------------------------
-|
-| The Supported Languages
-| etc en-US
-|
-*/
-
-$config['supported_languages'] = array("en-GB","da-DK");
-
-/*
-|--------------------------------------------------------------------------
-| Image Location
-|--------------------------------------------------------------------------
-|
-| This will be your image assets url.
-| etc http://cdn.illution.dk/Images/
-|
-*/
-
-$config['image_url'] = 'assets/images/';
-
-/*
-|--------------------------------------------------------------------------
-| CSS Location
-|--------------------------------------------------------------------------
-|
-| This will be your css assets url.
-| etc http://cdn.illution.dk/CSS/
-|
-*/
-
-$config['css_url'] = 'assets/css/';
-
-/*
-|--------------------------------------------------------------------------
-| JS Location
-|--------------------------------------------------------------------------
-|
-| This will be your js assets url.
-| etc http://cdn.illution.dk/JS/
-|
-*/
-
-$config['js_url'] = 'assets/js/';
-
-/*
-|--------------------------------------------------------------------------
-| Font Location
-|--------------------------------------------------------------------------
-|
-| This will be your font assets url.
-| etc http://cdn.illution.dk/Fonts/
-|
-*/
-
-$config['fonts_url'] = 'assets/fonts/';
 
 /*
 |--------------------------------------------------------------------------

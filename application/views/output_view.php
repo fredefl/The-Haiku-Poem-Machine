@@ -5,17 +5,17 @@
 <link rel="stylesheet" href="<?php echo $css_url; ?>standard.css">
 <link rel="stylesheet" href="<?php echo $css_url; ?>standard.css" type="text/css" media="print" />
 <link rel="stylesheet" href="<?php echo $css_url; ?>view.css" type="text/css" media="print" />
-<link rel="stylesheet" href="http://cdn.illution.dk/CSS/chosen.css" />
+<link rel="stylesheet" href="<?php echo $css_url; ?>chosen.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/smoothness/jquery-ui.css"/>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/smoothness/jquery-ui.css"/>
 <title><?php echo $page_title; ?></title>
 <!--[if lt IE 9]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 <style type="text/css">
 @font-face {
     font-family: "Bonzai";
-    src: url(http://illution.dk/Haiku/<?php echo $fonts_url;?>bonzai.ttf);
+    src: url(<?php echo $base_url; ?><?php echo $fonts_url;?>bonzai.ttf);
 }
 
 .text{
@@ -27,7 +27,7 @@
     <style type="text/css">
     @font-face {
         font-family: bonzai;
-        src:url(http://illution.dk/Haiku/<?php echo $fonts_url;?>bonzai.eot);
+        src:url(<?php echo $base_url; ?><?php echo $fonts_url;?>bonzai.eot);
     }
     
     .text{
@@ -39,7 +39,7 @@
 <style type="text/css" media="print">
 @font-face {
     font-family: "Bonzai";
-    src: url(http://illution.dk/Haiku/<?php echo $fonts_url;?>bonzai.ttf);
+    src: url(<?php echo $base_url; ?><?php echo $fonts_url;?>bonzai.ttf);
 }
 
 .text{
@@ -51,7 +51,7 @@
     <style type="text/css" media="print">
     @font-face {
         font-family: bonzai;
-        src:url(http://illution.dk/Haiku/<?php echo $fonts_url;?>bonzai.eot);
+        src:url(<?php echo $base_url; ?><?php echo $fonts_url;?>bonzai.eot);
     }
     
     .text{
@@ -79,7 +79,7 @@
         <button id="Return"><?php echo $return; ?></button>
     </div>
     <div id="copyright">
-        <a style="color:#70777a;" href="http://illution.dk">Copyright &copy; Illution 2011</a>
+        <a style="color:#70777a;" href="https://illution.dk">Copyright &copy; Illution 2011</a>
     </div> 
     
     <div id="idDialog" title="<?php echo $id_dialog; ?>" style="display:none; overflow:hidden">

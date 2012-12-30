@@ -11,6 +11,27 @@ body {
 	cursor:default;	
 }
 
+.description {
+	background-color: #F7F5F6;
+	margin:0px 40px;
+	font-style: italic;
+	font-size: 0.9em;
+}
+
+.shadow:hover, .shadow:focus, .shadow:active {
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,.3);
+	-moz-box-shadow   : 0 0 5px rgba(0,0,0,.3);
+	box-shadow        : 0 0 5px rgba(0,0,0,.3);
+	border: 1px solid #5897fb;
+}
+
+.shadow-not-valid {
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,.3);
+	-moz-box-shadow   : 0 0 5px rgba(0,0,0,.3);
+	box-shadow        : 0 0 5px rgba(0,0,0,.3);
+	border: 1px solid #FF3333;
+}
+
 /* FLAGS */
 
 #flagDK {
@@ -18,6 +39,13 @@ body {
 	right:41px;	
 	top:25px;
 	cursor:pointer;
+}
+
+#tag_select_chzn {
+	margin-left: -20px;
+	width: 300px;
+	margin-top:-15px;
+	margin-bottom: 10px;
 }
 
 #flagGB {
@@ -28,22 +56,6 @@ body {
 }
 
 /*Copyright and Share Containers and Styles */
-
-#All{
-		
-}
-
-#Creator{
-	
-}
-
-#Time{
-	
-}
-
-#Id{
-	
-}
 
 #nameDialogClose{
 	width:265px;	
@@ -68,7 +80,33 @@ body {
 	width:160px;	
 }
 
+.error {
+	text-align: center;
+	padding: 0 20px;
+	width: auto;
+	min-width: 50%;
+	top: 20px;
+	display: block;
+	position: absolute;
+}
+
+.errors-container {
+	width:50%;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
 #shareContainer{
+	width:520px;
+	margin:0px auto;
+	margin-top:-35px;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	cursor:default;	
+}
+
+.box-container {
 	width:500px;
 	margin:0px auto;
 	margin-top:-35px;
@@ -77,12 +115,35 @@ body {
 	cursor:default;	
 }
 
-#share{
+.disabledPage {
+	display: none;
+}
+
+.box {
 	border-radius:4px;
 	box-shadow:0 0 2px rgba(0,0,0,0.2);
 	border:1px solid #8a9ba0;
 	background: #F0F5F7;
 	padding:10px 10px 10px 10px;
+	margin-bottom: 55px;
+	position:relative;	
+	margin-left:auto;
+	margin-right:auto;
+	list-style:none;
+	font-size:18px;
+}
+
+.center-text {
+	text-align:center;
+	vertical-align:middle;
+}
+
+#share{
+	border-radius:4px;
+	box-shadow:0 0 2px rgba(0,0,0,0.2);
+	border:1px solid #8a9ba0;
+	background: #F0F5F7;
+	padding:10px 0px 10px 0px;
 	margin-bottom: 55px;
 	height:50px;
 	position:relative;	
@@ -103,6 +164,23 @@ body {
 	cursor:default;		
 }
 
+hr {
+	margin-top:8px;
+}
+
+.header {
+	margin-bottom: 2px;
+}
+
+.sentence {
+	color:#70777a;
+}
+
+.sentences {
+	padding-left:10px;
+	padding-bottom: 3px;
+}
+
 #copyright {
 	border-radius:4px;
 	box-shadow:0 0 2px rgba(0,0,0,0.2);
@@ -114,13 +192,14 @@ body {
 	margin-left:auto;
 	margin-right:auto;
 	font-family: "Bonzai";
-	list-style:none;
-	text-align:center;
-	vertical-align:middle;
 	color:#CCC;
 	font-size:18px;
 }
  
+.left {
+	float: left;
+}
+
 /* End of Copyrigth and Share Styles */
 
 .addIcon_WebkitOpera {
