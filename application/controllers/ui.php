@@ -51,7 +51,13 @@ class Ui extends CI_Controller {
 	 * @access public
 	 */
 	public function Home () {
-		self::CreatePoemCollection($this->config->item("home_collection_identifier"));
+		$collection = $this->config->item("home_collection_identifier");
+		if (array_key_exists($this->ui_helper->language, $this->config->item("home_language_collections"))) {
+			$collections = $this->config->item("home_language_collections");
+			$collection = $collections[$this->ui_helper->language];
+		}
+
+		self::CreatePoemCollection($collection);
 	}
 
 	/**

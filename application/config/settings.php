@@ -13,6 +13,11 @@ $config["html5_shiv_url"] = "https://html5shiv.googlecode.com/svn/trunk/html5.js
  */
 $config["home_collection_identifier"] = "sdopweo";
 
+$config["home_language_collections"] = array(
+	"danish" => "absjGef",
+	"english" => "sdopweo"
+);
+
 $config["home_live_limit"] = 3;
 
 /*
